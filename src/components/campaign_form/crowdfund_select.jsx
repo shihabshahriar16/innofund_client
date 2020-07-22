@@ -1,12 +1,29 @@
 import React, {Component} from 'react';
+import M from 'materialize-css'
 
 class CrowdfundSelect extends Component {
+    componentDidMount() {
+        const element = document.getElementById('select_');
+        const instance = M.FormSelect.init(element, {});
+    }
+
     render() {
         return (
-            <div className='container'>
-                <div className='form-field col'>
-                    <div className="input-field col s12">
-                        <select>
+            <div>
+                <form className='col s12'>
+                    <div className='row'>
+                        <div className="input-field col s6">
+                            <input id="first_name" type="text" className="validate"/>
+                            <label htmlFor="first_name">First Name</label>
+                        </div>
+                        <div className="input-field col s6">
+                            <input id="last_name" type="text" className="validate"/>
+                            <label htmlFor="last_name">Last Name</label>
+                        </div>
+                    </div>
+
+                    <div className="input-field">
+                        <select id='select_'>
                             <option value="" disabled selected>Choose your option</option>
                             <option value="1">Option 1</option>
                             <option value="2">Option 2</option>
@@ -14,58 +31,7 @@ class CrowdfundSelect extends Component {
                         </select>
                         <label>Materialize Select</label>
                     </div>
-
-                    <div className="input-field col s12">
-                        <select multiple>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                        <label>Materialize Multiple Select</label>
-                    </div>
-
-                    <div className="input-field col s12">
-                        <select multiple>
-                            <optgroup label="team 1">
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                            </optgroup>
-                            <optgroup label="team 2">
-                                <option value="3">Option 3</option>
-                                <option value="4">Option 4</option>
-                            </optgroup>
-                        </select>
-                        <label>Optgroups</label>
-                    </div>
-
-                    <div className="input-field col s12 m6">
-                        <select className="icons">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="" data-icon="images/sample-1.jpg" className="circle">example 1</option>
-                            <option value="" data-icon="images/office.jpg" className="circle">example 2</option>
-                            <option value="" data-icon="images/yuna.jpg" className="circle">example 1</option>
-                        </select>
-                        <label>Images in select</label>
-                    </div>
-                    <div className="input-field col s12 m6">
-                        <select className="icons">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="" data-icon="images/sample-1.jpg" className="left circle">example 1</option>
-                            <option value="" data-icon="images/office.jpg" className="left circle">example 2</option>
-                            <option value="" data-icon="images/yuna.jpg" className="left circle">example 3</option>
-                        </select>
-                        <label>Images in select</label>
-                    </div>
-
-                    <label>Browser Select</label>
-                    <select className="browser-default">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                    </select>
-                </div>
+                </form>
             </div>
         );
     }
