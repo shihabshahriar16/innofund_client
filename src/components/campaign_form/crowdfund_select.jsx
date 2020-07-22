@@ -4,7 +4,7 @@ import M from 'materialize-css'
 class CrowdfundSelect extends Component {
     componentDidMount() {
         const element = document.getElementById('select_');
-        const instance = M.FormSelect.init(element, {});
+        M.FormSelect.init(element, {});
     }
 
     render() {
@@ -28,11 +28,15 @@ class CrowdfundSelect extends Component {
                             </select>
                         </div>
                     </div>
-                    <div className='row'>
-                        <div className='col s12'>
-                            <button className="btn btn-primary col s2 indigo darken-4 ">Next</button>
-                        </div>
-                    </div>
+                    <button style={{
+                        width: "150px",
+                        borderRadius: "3px",
+                        letterSpacing: "1.5px",
+                        marginTop: "1rem"
+                    }}
+                            type="submit"
+                            className="btn btn-large waves-effect waves-light hoverable indigo darken-1">Next
+                    </button>
                 </form>
             </div>
         );
