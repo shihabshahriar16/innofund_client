@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled from 'styled-components';
 import logo from '../../images/logo.png';
+import router from "../../routing/routing_variables";
 const LinkStyled = styled(Link)`
     color: black;
 	:hover {
@@ -40,7 +41,7 @@ class Navbar extends Component {
                             </ul>
                             <ul className="right hide-on-med-and-down">
                                 <li><LinkStyled to="/about">About Us</LinkStyled></li>
-                                <li><LinkStyled to="#">Start a Campaign</LinkStyled></li>
+                                <li><LinkStyled to={router.START_A_CAMPAIGN}>Start a Campaign</LinkStyled></li>
                                 {this.props.auth.isAuthenticated ? <li>
                                     <b style={{ textAlign: "center", fontSize: "150%", textJustify: "center" }}>
                                         {this.props.auth.user.name.charAt(0).toUpperCase()}
