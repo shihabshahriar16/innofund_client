@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import React, {Component} from "react";
+import {Link, withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/authAction";
+import {connect} from "react-redux";
+import {registerUser} from "../../actions/authAction";
 import classnames from "classnames";
 
 class Register extends Component {
@@ -27,15 +27,17 @@ class Register extends Component {
             });
         }
     }
+
     componentDidMount() {
         window.scrollTo(0, 0)
         // If logged in and user navigates to Register page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-                this.props.history.push("/dashboard");
+            this.props.history.push("/dashboard");
         }
     }
+
     onChange = e => {
-        this.setState({ [e.target.id]: e.target.value });
+        this.setState({[e.target.id]: e.target.value});
     };
 
     onSubmit = e => {
@@ -51,22 +53,24 @@ class Register extends Component {
         //console.log(JSON.stringify(newUser));
         this.props.registerUser(newUser, this.props.history);
     };
+
     render() {
-        const { errors } = this.state;
+        const {errors} = this.state;
         return (
             <div className="container">
-                <div style={{ marginTop: "8rem", marginBottom: "8rem" }} className="row">
+                <div style={{marginTop: "8rem", marginBottom: "8rem"}} className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/" className="btn-flat waves-effect">
                             <i className="material-icons left">keyboard_backspace</i>
                             Back to home
                         </Link>
-                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                        <div className="col s12" style={{paddingLeft: "11.250px"}}>
                             <h4>
                                 <b>Register</b> below
                             </h4>
                             <p className="grey-text text-darken-1">
-                                Already have an account? <Link className="indigo-text text-darken-1" to="/login">Log in</Link>
+                                Already have an account? <Link className="indigo-text text-darken-1" to="/login">Log
+                                in</Link>
                             </p>
                         </div>
                         <form noValidate onSubmit={this.onSubmit}>
@@ -154,20 +158,19 @@ class Register extends Component {
                                 <label htmlFor="position">Position</label>
                                 <span className="red-text">{errors.position}</span>
                             </div>
-                                <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                                        <button
-                                        style={{
-                                            width: "150px",
-                                            borderRadius: "3px",
-                                            letterSpacing: "1.5px",
-                                            marginTop: "1rem"
-                                        }}
-                                        type="submit"
-                                        className="btn btn-large waves-effect waves-light hoverable indigo darken-1"
-                                    >
-                                        Sign up
-                                    </button>
-                                </div>
+                            <div className="col s12" style={{paddingLeft: "11.250px"}}>
+                                <button
+                                    style={{
+                                        width: "150px",
+                                        borderRadius: "3px",
+                                        letterSpacing: "1.5px",
+                                        marginTop: "1rem"
+                                    }}
+                                    type="submit"
+                                    className="btn btn-large waves-effect waves-light hoverable indigo darken-1">
+                                    Sign up
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -175,6 +178,7 @@ class Register extends Component {
         );
     }
 }
+
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
@@ -186,5 +190,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
     mapStateToProps,
-    { registerUser }
+    {registerUser}
 )(withRouter(Register));
