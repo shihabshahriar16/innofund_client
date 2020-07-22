@@ -26,12 +26,12 @@ class CrowdfundSelect extends Component {
                                 <option value="2">Rewards-based</option>
                                 <option value="3">Profit-sharing</option>
                             </select>
-                            <label>Materialize Select</label>
                         </div>
                     </div>
                     <div className='row'>
-                        <button className="btn btn-primary col s2">Next</button>
-
+                        <div className='col s12'>
+                            <button className="btn btn-primary col s2 indigo darken-4 ">Next</button>
+                        </div>
                     </div>
                 </form>
             </div>
