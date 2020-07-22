@@ -14,22 +14,24 @@ class CrowdfundSelect extends Component {
                     <div className='row'>
                         <div className="input-field col s6">
                             <input id="first_name" type="text" className="validate"/>
-                            <label htmlFor="first_name">First Name</label>
-                        </div>
-                        <div className="input-field col s6">
-                            <input id="last_name" type="text" className="validate"/>
-                            <label htmlFor="last_name">Last Name</label>
+                            <label htmlFor="first_name">Your Project Name</label>
                         </div>
                     </div>
 
-                    <div className="input-field">
-                        <select id='select_'>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                        <label>Materialize Select</label>
+                    <div className="row">
+                        <div className="col s6 input-field">
+                            <select id='select_'>
+                                <option value="" disabled selected>What type of Crowdfunding ?</option>
+                                <option value="1">Equity-Based</option>
+                                <option value="2">Rewards-based</option>
+                                <option value="3">Profit-sharing</option>
+                            </select>
+                            <label>Materialize Select</label>
+                        </div>
+                    </div>
+                    <div className='row'>
+                        <button className="btn btn-primary col s2">Next</button>
+
                     </div>
                 </form>
             </div>
