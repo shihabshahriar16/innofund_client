@@ -2,9 +2,19 @@ import React, {Component} from 'react';
 import M from 'materialize-css'
 
 class CrowdfundSelect extends Component {
+    state = this.props.state;
+
     componentDidMount() {
         const element = document.getElementById('select_');
         M.FormSelect.init(element, {});
+    }
+
+    handleChange = (event) => {
+        const {name, value} = event.target;
+        this.setState({
+            ...this.state,
+            [name] : value
+        })
     }
 
     render() {
@@ -13,7 +23,8 @@ class CrowdfundSelect extends Component {
                 <form className='col s12'>
                     <div className='row'>
                         <div className="input-field col s6">
-                            <input id="first_name" type="text" className="validate"/>
+                            <input id="first_name" type="text" value={this.state.projectName} name='projectName'
+                                   className="validate" onChange={this.handleChange}/>
                             <label htmlFor="first_name">Your Project Name</label>
                         </div>
                     </div>

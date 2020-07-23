@@ -19,6 +19,10 @@ const LinkBrand = styled(Link)`
 `
 
 class CampaignForm extends Component {
+    state = {
+        projectName: '',
+        crowdfundType: ''
+    }
     render() {
         return (
             <div>
@@ -36,7 +40,7 @@ class CampaignForm extends Component {
                 </div>  {/*NavBar*/}
                 <div className="container">
                     <h3>Home > Start A Project</h3>
-                    <CrowdfundSelect/>
+                    <CrowdfundSelect project={this.state}/>
                 </div>
             </div>
         );
