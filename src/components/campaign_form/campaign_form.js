@@ -1,24 +1,24 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import logo from '../../images/logo.png';
+//import logo from '../../images/logo.png';
 import styled from 'styled-components';
 import {addCampaign, ProjectModel, projectTypes} from "../../store/campaignFormInfo";
 import M from 'materialize-css'
 import {connect} from "react-redux";
 
-const LinkStyled = styled(Link)`
-    color: black;
-	:hover {
-        background-color: #3949ab;
-		color: white;
-	}
-`
-const LinkBrand = styled(Link)`
-    height: 64px;
-	:hover {
-        background-color: white;
-	}
-`
+// const LinkStyled = styled(Link)`
+//     color: black;
+// 	:hover {
+//         background-color: #3949ab;
+// 		color: white;
+// 	}
+// `
+// const LinkBrand = styled(Link)`
+//     height: 64px;
+// 	:hover {
+//         background-color: white;
+// 	}
+// `
 
 class CampaignForm extends Component {
     state = ProjectModel()
