@@ -45,7 +45,7 @@ class CampaignForm extends Component {
                 {/*</div>*/}
                 {/*NavBar*/}
                 <div className="container">
-                    <h3>Home > Start A Project</h3>
+                    <h3>Home Start A Project</h3>
                     <form onSubmit={this.handleSubmit}>
                         <div>
                             <input type='text' onChange={this.handleChange} value={this.state.project_name}

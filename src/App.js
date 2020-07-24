@@ -24,7 +24,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import CampaignForm from "./components/campaign_form/campaign_form";
 import router from "./routing/routing_variables";
 
-axios.defaults.baseURL = "https://git.heroku.com/innofund-server.git"
+axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
 //axios.defaults.baseURL = "http://localhost:5000";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -58,8 +58,7 @@ function App() {
                         <React.Fragment>
                             <Navbar/>
                             <div className="Main">
-                                <Route exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
-                                {/*TODO: convert to private route*/}
+                                <PrivateRoute exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
                                 <Route exact path="/" component={Landing}/>
                                 <Route exact path="/register" component={Register}/>
                                 <Route exact path="/login" component={Login}/>
