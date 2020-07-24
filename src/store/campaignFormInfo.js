@@ -4,9 +4,9 @@ export const projectTypes = {
     EQUITY_BASED: 'Equity-Based', REWARD_BASED: 'Reward-Based', PROFIT_SHARING: 'Profit Sharing'
 }
 
-export function ProjectModel() {
+export function ProjectModel(idValue) {
     return {
-        id: '',
+        id: idValue,
         project_name: '',
         project_type: '',
         project_description: '',
@@ -22,13 +22,11 @@ export function ProjectModel() {
 
 const store = createSlice({
     name: 'startCampaignInfo',
-    initialState: [],
+    initialState: {},
     reducers: {
         addCampaign: (projects, action) => {
             //payload will be the project object
-            projects.push(
-                {[action.payload.id]: action.payload}
-            )
+            projects[action.payload.id] = action.payload
         },
         deleteCampaign: ((projects, action) => {
             projects = projects.filter(project => project.id !== action.payload.id)
