@@ -26,15 +26,13 @@ const store = createSlice({
     reducers: {
         addCampaign: (projects, action) => {
             //payload will be the project object
-            console.log(action.payload)
-            console.log(action)
             projects.push(
                 {[action.payload.id]: action.payload}
             )
         },
         deleteCampaign: ((projects, action) => {
             projects = projects.filter(project => project.id !== action.payload.id)
-        })
+        }),
     }
 })
 export const selectProject = state => state.projectsInStore
