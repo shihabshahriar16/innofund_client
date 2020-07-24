@@ -121,10 +121,8 @@ class CampaignForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({})
-
 const mapDispatchToProps = dispatch => ({
     addProject: (project) => dispatch(addCampaign({payload: project}))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampaignForm);
+export default connect(() => ({}), mapDispatchToProps)(CampaignForm);
