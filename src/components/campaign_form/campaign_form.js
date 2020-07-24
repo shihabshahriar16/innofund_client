@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import {addCampaign, ProjectModel, projectTypes} from "../../store/campaignFormInfo";
 import M from 'materialize-css'
 import {connect} from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
 
 // const LinkStyled = styled(Link)`
 //     color: black;
@@ -21,7 +22,7 @@ import {connect} from "react-redux";
 // `
 
 class CampaignForm extends Component {
-    state = ProjectModel()
+    state = ProjectModel(uuidv4())
 
     componentDidMount() {
         M.FormSelect.init(document.getElementById('project_type'))
@@ -124,7 +125,7 @@ class CampaignForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addProject: (project) => dispatch(addCampaign({payload: project}))
+    addProject: (project) => dispatch(addCampaign(project))
 })
 
 export default connect(() => ({}), mapDispatchToProps)(CampaignForm);
