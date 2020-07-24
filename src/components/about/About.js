@@ -10,7 +10,7 @@ class About extends Component {
                 <div className="container">
                     <div className="section">
                     <h4 className="center-align">
-                    About<b> COURSEBEE</b>
+                    About<b> INNOFUND</b>
                 </h4>
                 <blockquote>
                 <p>
