@@ -54,10 +54,12 @@ function App() {
             <Provider store={store}>
                 <Router history={history}>
                     <Switch>
-                        <Route exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
+
                         <React.Fragment>
                             <Navbar/>
                             <div className="Main">
+                                <Route exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
+                                {/*TODO: convert to private route*/}
                                 <Route exact path="/" component={Landing}/>
                                 <Route exact path="/register" component={Register}/>
                                 <Route exact path="/login" component={Login}/>
