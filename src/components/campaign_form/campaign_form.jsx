@@ -46,8 +46,6 @@ class CampaignForm extends Component {
                 {/*NavBar*/}
                 <div className="container">
                     <h3>Home > Start A Project</h3>
-                    {/*<CrowdfundSelect project={this.state}/>*/}
-
                     <form onSubmit={this.handleSubmit}>
                         <div>
                             <input type='text' onChange={this.handleChange} value={this.state.project_name}
@@ -80,21 +78,20 @@ class CampaignForm extends Component {
 
 
                             <select id='project_type'>
-                                {/*<option value="" disabled selected>Select Project Type</option>*/}
-
                                 <option value={projectTypes.EQUITY_BASED}>{projectTypes.EQUITY_BASED}</option>
                                 <option value={projectTypes.REWARD_BASED}>{projectTypes.REWARD_BASED}</option>
                                 <option value={projectTypes.PROFIT_SHARING}>{projectTypes.PROFIT_SHARING}</option>
-
-
                             </select>
 
-                            {/*<label className='teal-text darken-4' style={{fontWeight: "bold", fontSize: 15}}>Select Project Type</label>*/}
-                            {/*<input type='text' style={{marginTop: 50}} onClick={this.handleChange} value={this.state.pledge_amount}*/}
-                            {/*       name={'pledge_amount'}/>*/}
-                            {/*<input type='text' onClick={this.handleChange} value={this.state.number_of_investors}*/}
-                            {/*       name={'number_of_investors'}/>*/}
+
+                            <input type='text' style={{marginTop: 20}} onChange={this.handleChange}
+                                   value={this.state.project_showcasing_video_url}
+                                   name={'project_showcasing_video_url'}
+                                   placeholder={'Your Project Video Url'}/>
+
+
                         </div>
+
                         <button style={{
                             width: "150px",
                             borderRadius: "3px",
@@ -124,9 +121,7 @@ class CampaignForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-
-})
+const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
     addProject: (project) => dispatch(addCampaign({payload: project}))
