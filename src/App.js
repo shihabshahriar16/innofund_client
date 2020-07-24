@@ -24,8 +24,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 import CampaignForm from "./components/campaign_form/campaign_form";
 import router from "./routing/routing_variables";
 
-//axios.defaults.baseURL = "https://innofund.com"
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://git.heroku.com/innofund-server.git"
+//axios.defaults.baseURL = "http://localhost:5000";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
     // Set auth token header auth
