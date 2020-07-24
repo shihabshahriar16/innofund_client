@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import logo from '../../images/logo.png';
 import styled from 'styled-components';
-import CrowdfundSelect from "./crowdfund_select";
+import {addCampaign, ProjectModel, projectTypes} from "../../store/campaignFormInfo";
+import M from 'materialize-css'
+import {connect} from "react-redux";
 
 const LinkStyled = styled(Link)`
     color: black;
@@ -19,10 +21,12 @@ const LinkBrand = styled(Link)`
 `
 
 class CampaignForm extends Component {
-    state = {
-        projectName: '',
-        crowdfundType: ''
+    state = ProjectModel()
+
+    componentDidMount() {
+        M.FormSelect.init(document.getElementById('project_type'))
     }
+
     render() {
         return (
             <div>
@@ -30,21 +34,102 @@ class CampaignForm extends Component {
                     <nav style={{height: "64px"}} className="white z-depth-2">
                         <div className="nav-wrapper">
                             <ul className="left">
-                                <li><LinkBrand to="/" ><img style={{ height: "60px" }} src={logo} alt="INNOFUND" /></LinkBrand></li>
+                                <li><LinkBrand to="/"><img style={{height: "60px"}} src={logo}
+                                                           alt="INNOFUND"/></LinkBrand></li>
                             </ul>
                             <ul className="right">
                                 <li><LinkStyled to="/about">About Us</LinkStyled></li>
                             </ul>
                         </div>
                     </nav>
-                </div>  {/*NavBar*/}
+                </div>
+                {/*NavBar*/}
                 <div className="container">
                     <h3>Home > Start A Project</h3>
-                    <CrowdfundSelect project={this.state}/>
+                    {/*<CrowdfundSelect project={this.state}/>*/}
+
+                    <form onSubmit={this.handleSubmit}>
+                        <div>
+                            <input type='text' onChange={this.handleChange} value={this.state.project_name}
+                                   name={'project_name'} placeholder={'project_name'}/>
+                            <input type='text' onChange={this.handleChange} value={this.state.project_type}
+                                   name={'project_type'} placeholder={'project_type'}/>
+                            <textarea className='materialize-textarea' onChange={this.handleChange}
+                                      value={this.state.project_description}
+                                      name={'project_description'} placeholder={'project_description'}/>
+                            <input type='text' onChange={this.handleChange} value={this.state.start_date}
+                                   name={'start_date'}
+                                   placeholder={'start_date'}/>
+                            <input type='text' style={{marginBottom: 50}} onChange={this.handleChange}
+                                   value={this.state.end_date}
+                                   name={'end_date'}
+                                   placeholder={'end_date'}/>
+                            <label className='row s2 teal-text darken-4' style={{fontWeight: "bold", fontSize: 15}}>Goal
+                                Money
+                                <input className='row s10' style={{marginBottom: 50}} type='number'
+                                       onChange={this.handleChange}
+                                       value={this.state.goal_money}
+                                       name={'goal_money'}
+                                       placeholder='goal_money'/>
+                            </label>
+
+                            <label className='row s2 teal-text darken-4'
+                                   style={{fontWeight: "bold", fontSize: 15}}>Select
+                                Project Type
+                            </label>
+
+
+                            <select id='project_type'>
+                                {/*<option value="" disabled selected>Select Project Type</option>*/}
+
+                                <option value={projectTypes.EQUITY_BASED}>{projectTypes.EQUITY_BASED}</option>
+                                <option value={projectTypes.REWARD_BASED}>{projectTypes.REWARD_BASED}</option>
+                                <option value={projectTypes.PROFIT_SHARING}>{projectTypes.PROFIT_SHARING}</option>
+
+
+                            </select>
+
+                            {/*<label className='teal-text darken-4' style={{fontWeight: "bold", fontSize: 15}}>Select Project Type</label>*/}
+                            {/*<input type='text' style={{marginTop: 50}} onClick={this.handleChange} value={this.state.pledge_amount}*/}
+                            {/*       name={'pledge_amount'}/>*/}
+                            {/*<input type='text' onClick={this.handleChange} value={this.state.number_of_investors}*/}
+                            {/*       name={'number_of_investors'}/>*/}
+                        </div>
+                        <button style={{
+                            width: "150px",
+                            borderRadius: "3px",
+                            letterSpacing: "1.5px",
+                            marginTop: "3rem"
+                        }}
+                                type="submit"
+                                className="btn btn-large waves-effect waves-light hoverable indigo darken-1">Next
+                        </button>
+                    </form>
                 </div>
             </div>
         );
     }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.addProject(this.state)
+    }
+
+    handleChange = (event) => {
+        const {name, value} = event.target;
+        this.setState({
+            [name]: value
+        })
+        // console.log(this.state)
+    }
 }
 
-export default CampaignForm;
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+    addProject: (project) => dispatch(addCampaign({payload: project}))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CampaignForm);
