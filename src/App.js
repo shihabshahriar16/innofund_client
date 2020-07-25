@@ -58,7 +58,7 @@ function App() {
                         <React.Fragment>
                             <Navbar/>
                             <div className="Main">
-                                <PrivateRoute exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
+                                <Route exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
                                 <Route exact path="/" component={Landing}/>
                                 <Route exact path="/register" component={Register}/>
                                 <Route exact path="/login" component={Login}/>
