@@ -1,25 +1,8 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
-//import logo from '../../images/logo.png';
-import styled from 'styled-components';
 import {addCampaign, ProjectModel, projectTypes} from "../../store/campaignFormInfo";
 import M from 'materialize-css'
 import {connect} from "react-redux";
-import { v4 as uuidv4 } from 'uuid';
-
-// const LinkStyled = styled(Link)`
-//     color: black;
-// 	:hover {
-//         background-color: #3949ab;
-// 		color: white;
-// 	}
-// `
-// const LinkBrand = styled(Link)`
-//     height: 64px;
-// 	:hover {
-//         background-color: white;
-// 	}
-// `
+import {v4 as uuidv4} from 'uuid';
 
 class CampaignForm extends Component {
     state = ProjectModel(uuidv4())
@@ -111,8 +94,7 @@ class CampaignForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.addProject(this.state)
-// Routing kore homePage e jabe
-
+        //TODO: Routing kore homePage e jabe if the credentials are correct
     }
 
     handleChange = (event) => {
