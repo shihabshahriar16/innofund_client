@@ -54,18 +54,17 @@ function App() {
             <Provider store={store}>
                 <Router history={history}>
                     <Switch>
-
                         <React.Fragment>
                             <Navbar/>
                             <div className="Main">
                                 <Route exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
                                 <Route exact path="/" component={Landing}/>
-                                <Route exact path="/register" component={Register}/>
-                                <Route exact path="/login" component={Login}/>
-                                <Route exact path="/forgotpass" component={ForgotPass}/>
-                                <Route exact path="/changepass/:token" component={ChangePass}/>
-                                <Route exact path="/verifyemail" component={VerifyEmail}/>
-                                <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+                                <Route exact path={router.REGISTER} component={Register}/>
+                                <Route exact path={router.LOGIN} component={Login}/>
+                                <Route exact path={router.FORGOT_PASSWORD} component={ForgotPass}/>
+                                <Route exact path={router.CHANGE_PASSWORD} component={ChangePass}/>
+                                <Route exact path={router.VERIFY_EMAIL} component={VerifyEmail}/>
+                                <PrivateRoute exact path={router.DASHBOARD} component={Dashboard}/>
                             </div>
                             <Footer/>
                         </React.Fragment>
