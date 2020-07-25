@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee14bc59-3390-4f6d-99a6-a0bc5a47a955" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/authentication.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/campaign_form/campaign_form.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/campaign_form/campaign_form.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/errorReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/authentication.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,7 @@
       <workItem from="1595632583602" duration="2277000" />
       <workItem from="1595634881222" duration="87000" />
       <workItem from="1595635002502" duration="63000" />
-      <workItem from="1595635210889" duration="3170000" />
+      <workItem from="1595635210889" duration="4199000" />
     </task>
     <servers />
   </component>
@@ -113,14 +114,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1595377130648" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595635418488">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595638473493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595635418488" />
-    <state width="498" height="457" key="SwitcherDM" timestamp="1595638323846">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595638473493" />
+    <state width="498" height="457" key="SwitcherDM" timestamp="1595639017384">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="457" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595638323846" />
+    <state width="498" height="457" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595639017384" />
     <state x="528" y="142" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595593899057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
