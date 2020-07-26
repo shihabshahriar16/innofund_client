@@ -17,7 +17,8 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"

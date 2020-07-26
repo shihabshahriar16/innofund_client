@@ -2,7 +2,6 @@ import React from "react";
 import {Switch, Route, Router} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import setCurrentUser from "./actions/setUser";
 import logoutUser from "./actions/logoutAction";
 import {Provider} from "react-redux";
 import store from "./store";
@@ -23,6 +22,7 @@ import ChangePass from "./components/forgotPass/ChangePass";
 import Dashboard from "./components/dashboard/Dashboard";
 import CampaignForm from "./components/campaign_form/campaign_form";
 import router from "./routing/routing_variables";
+import {setCurrentUser} from "./store/authentication";
 
 import MyProjects from './components/dashboard/MyProjects';
 import ProjectsBacked from './components/dashboard/ProjectsBacked.js';
@@ -60,17 +60,17 @@ function App() {
             <Provider store={store}>
                 <Router history={history}>
                     <Switch>
-
                         <React.Fragment>
                             <Navbar/>
                             <div className="Main">
-                                <PrivateRoute exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
+                                <Route exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
                                 <Route exact path="/" component={Landing}/>
-                                <Route exact path="/register" component={Register}/>
-                                <Route exact path="/login" component={Login}/>
-                                <Route exact path="/forgotpass" component={ForgotPass}/>
-                                <Route exact path="/changepass/:token" component={ChangePass}/>
-                                <Route exact path="/verifyemail" component={VerifyEmail}/>
+                                <Route exact path={router.REGISTER} component={Register}/>
+                                <Route exact path={router.LOGIN} component={Login}/>
+                                <Route exact path={router.FORGOT_PASSWORD} component={ForgotPass}/>
+                                <Route exact path={router.CHANGE_PASSWORD} component={ChangePass}/>
+                                <Route exact path={router.VERIFY_EMAIL} component={VerifyEmail}/>
+                                
 
                                 {/* the following will be private routes */}
                                 <Route exact path="/dashboard" component={Dashboard}/>
