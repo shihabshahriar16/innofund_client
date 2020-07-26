@@ -1,9 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import qs from "querystring";
-import {GET_ERRORS} from "../actions/types";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import {getErrors} from "./errorReducer";
 
 const isEmpty = require('is-empty');
 
@@ -32,10 +32,11 @@ export const registerUser = (userData, history) => (dispatch) => {
         }) // re-direct to email verification on successful register
         .catch((err) => {
             console.log(err);
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data,
-            });
+            // dispatch({
+            //     type: GET_ERRORS,
+            //     payload: err.response.data,
+            // });
+            dispatch(getErrors(err.response.data));
         });
 };
 
@@ -59,11 +60,23 @@ export const loginUser = (userData, history) => (dispatch) => {
             }
         })
         .catch((err) =>
-            dispatch({
-                type: GET_ERRORS,
-                payload: err.response.data,
-            })
+            // dispatch({
+            //     type: GET_ERRORS,
+            //     payload: err.response.data,
+            // })
+            dispatch(getErrors(err.response.data))
         );
+};
+
+// Log user out
+export const logoutUser = () => dispatch => {
+    // Remove token from local storage
+    localStorage.removeItem("jwtToken");
+    // Remove auth header for future requests
+    setAuthToken(false);
+    // Set current user to empty object {} which will set isAuthenticated to false
+
+    dispatch(setCurrentUser({}));
 };
 
 

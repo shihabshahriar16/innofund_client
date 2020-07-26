@@ -2,7 +2,7 @@ import React from "react";
 import {Switch, Route, Router} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import logoutUser from "./actions/logoutAction";
+import {logoutUser} from "./store/authentication";
 import {Provider} from "react-redux";
 import store from "./store";
 import axios from "axios";
