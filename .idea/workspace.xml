@@ -19,20 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee14bc59-3390-4f6d-99a6-a0bc5a47a955" name="Default Changelist" comment="It is fixed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/authAction.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/logoutAction.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/types.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/verifyEmail/VerifyEmail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/verifyEmail/VerifyEmail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/authReducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/errorReducer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/authentication.js" afterDir="false" />
+    <list default="true" id="ee14bc59-3390-4f6d-99a6-a0bc5a47a955" name="Default Changelist" comment="Redundant files are cur">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +88,7 @@
       <workItem from="1595634881222" duration="87000" />
       <workItem from="1595635002502" duration="63000" />
       <workItem from="1595635210889" duration="5925000" />
-      <workItem from="1595763168047" duration="2326000" />
+      <workItem from="1595763168047" duration="3203000" />
     </task>
     <task id="LOCAL-00001" summary="It is fixed">
       <created>1595763438165</created>
@@ -109,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595763438165</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Redundant files are cur">
+      <created>1595766831679</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595766831679</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,7 +124,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="It is fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="It is fixed" />
+    <MESSAGE value="Redundant files are cur" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redundant files are cur" />
   </component>
   <component name="WindowStateProjectService">
     <state x="681" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595377130648">
@@ -148,10 +144,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="457" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1595765666521" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1595763439546">
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1595766855586">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595763439546" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595766855586" />
     <state x="528" y="142" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1595593899057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
