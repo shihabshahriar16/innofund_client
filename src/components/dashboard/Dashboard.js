@@ -3,25 +3,33 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 //import { Link } from "react-router-dom";
 import logoutUser from "../../actions/logoutAction";
-import HeaderImg from "../layout/HeaderImg"
+import HeaderImg from "../layout/HeaderImg";
+import SideNav from "./SideNav";
+import { Route , Switch} from "react-router-dom";
+//import  from 'react-router-dom';
 
 class Dashboard extends Component {
     onLogoutClick = e => {
         e.preventDefault();
-        this.props.history.push("/");
+        //this.props.history.push("/");
         this.props.logoutUser();
     };
 
+
     render() {
-        const {user} = this.props.auth;
+        
+        //uncomment the following for authorization
+       // const {user} = this.props.auth;
         return (
             <div>
-                <HeaderImg/>
+                {/* <HeaderImg/> */}
+                
+            
                 <div>
                     <div className="row">
                         <div className="col s12 center-align">
                             <h4>
-                                <b>Hello, </b> {user.name.split(" ")[0]}
+                                {/* <b>Hello, </b> {user.name.split(" ")[0]} */}
                                 <p className="flow-text grey-text text-darken-1">
                                     Hi, You are now a part of our great community<br/><br/>
                                     Search projects or start your own campaign<br/><br/>
@@ -44,6 +52,10 @@ class Dashboard extends Component {
                         </div>
                     </div>
                 </div>
+                
+                
+                <SideNav />
+                    
             </div>
         );
     }

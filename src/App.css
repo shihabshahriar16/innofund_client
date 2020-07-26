@@ -9,3 +9,16 @@
 .Main {
     flex: 1 0 auto;
   }
+
+
+/* Styles for Dashboard Links */
+
+.link{
+  background-color: white;
+  color:indigo;
+}
+
+.link.active{
+  background-color: indigo;
+  color:white;
+}
