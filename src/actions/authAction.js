@@ -3,7 +3,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { GET_ERRORS } from "./types";
-import setCurrentUser from "./setUser";
+import {setCurrentUser} from "../store/authentication";
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {

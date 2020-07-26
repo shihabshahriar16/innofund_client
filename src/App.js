@@ -2,7 +2,6 @@ import React from "react";
 import {Switch, Route, Router} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import setCurrentUser from "./actions/setUser";
 import logoutUser from "./actions/logoutAction";
 import {Provider} from "react-redux";
 import store from "./store";
@@ -23,6 +22,7 @@ import ChangePass from "./components/forgotPass/ChangePass";
 import Dashboard from "./components/dashboard/Dashboard";
 import CampaignForm from "./components/campaign_form/campaign_form";
 import router from "./routing/routing_variables";
+import {setCurrentUser} from "./store/authentication";
 
 axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
 //axios.defaults.baseURL = "http://localhost:5000";

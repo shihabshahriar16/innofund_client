@@ -1,5 +1,5 @@
 import setAuthToken from "../utils/setAuthToken";
-import setCurrentUser from "./setUser";
+import {setCurrentUser} from "../store/authentication";
 // Register User
 // Log user out
 const logoutUser = () => dispatch => {
