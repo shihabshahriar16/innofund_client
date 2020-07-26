@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react';
 import SideNav from './SideNav';
 
-function Settings() {
-    return (
-        <div className="row  ">
-             <SideNav />           
-            <h5>My settings</h5>
-                        
-        </div>
-    )
+class Settings extends Component {
+    render() {
+        return (
+            <div>
+                <SideNav />
+                <h5>My settings</h5>
+            </div>
+        )
+    }
 }
 
 export default Settings;

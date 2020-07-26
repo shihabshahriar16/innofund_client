@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react';
 import SideNav from './SideNav'
 
-function Bookmarks() {
-    return (
-        <div >
-            <SideNav/>
+class Bookmarks extends Component {
+    render() {
+        return (
+            <div>
+                <SideNav/>
             <h5>My Bookmarks</h5>
-            
-        </div>
-    )
+            </div>
+        )
+    }
 }
 
 export default Bookmarks;

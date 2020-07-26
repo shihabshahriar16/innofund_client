@@ -1,13 +1,16 @@
-import React from 'react'
-import SideNav from './SideNav'
+import React, { Component } from 'react'
+import SideNav from './SideNav';
 
-function Inbox() {
-    return (
-        <div>
-            <SideNav />
+class Inbox extends Component {
+    render() {
+        return (
+            <div>
+                            <SideNav />
             <h5>My Inbox</h5>
-        </div>
-    )
+            </div>
+        )
+    }
 }
 
 export default Inbox;
+
