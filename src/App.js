@@ -24,6 +24,12 @@ import Dashboard from "./components/dashboard/Dashboard";
 import CampaignForm from "./components/campaign_form/campaign_form";
 import router from "./routing/routing_variables";
 
+import MyProjects from './components/dashboard/MyProjects';
+import ProjectsBacked from './components/dashboard/ProjectsBacked.js';
+import Settings from './components/dashboard/Settings'
+import Inbox from './components/dashboard/Inbox';
+import Bookmarks from './components/dashboard/Bookmarks';
+
 axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
 //axios.defaults.baseURL = "http://localhost:5000";
 // Check for token to keep user logged in
@@ -65,7 +71,15 @@ function App() {
                                 <Route exact path="/forgotpass" component={ForgotPass}/>
                                 <Route exact path="/changepass/:token" component={ChangePass}/>
                                 <Route exact path="/verifyemail" component={VerifyEmail}/>
-                                <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+
+                                {/* the following will be private routes */}
+                                <Route exact path="/dashboard" component={Dashboard}/>
+                                <Route exact path="/dashboard/my_projects" component={MyProjects}/>
+                                <Route exact path="/dashboard/projects_backed" component={ProjectsBacked}/>
+                                <Route exact path="/dashboard/settings" component={Settings}/>
+                                <Route exact path="/dashboard/inbox" component={Inbox}/>
+                                <Route exact path="/dashboard/bookmarks" component={Bookmarks}/>
+                                
                             </div>
                             <Footer/>
                         </React.Fragment>
