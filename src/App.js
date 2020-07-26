@@ -9,7 +9,7 @@ import axios from "axios";
 import {createBrowserHistory} from "history";
 import "./App.css";
 
-import PrivateRoute from "./components/private-route/PrivateRoute";
+//import PrivateRoute from "./components/private-route/PrivateRoute";
 
 import Landing from "./components/landing/Landing";
 import Register from "./components/auth/Register";

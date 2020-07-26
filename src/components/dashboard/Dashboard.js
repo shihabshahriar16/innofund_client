@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 //import { Link } from "react-router-dom";
 import {logoutUser} from "../../store/authentication";
-import HeaderImg from "../layout/HeaderImg"
+//import HeaderImg from "../layout/HeaderImg"
 import SideNav from "./SideNav";
-import { Route , Switch} from "react-router-dom";
+//import { Route , Switch} from "react-router-dom";
 //import  from 'react-router-dom';
 
 class Dashboard extends Component {
