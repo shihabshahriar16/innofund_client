@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 //import { Link } from "react-router-dom";
-import {logoutUser} from "../../store/authentication";
+import {logoutUser} from "../../store/authenticationSlice";
 import HeaderImg from "../layout/HeaderImg"
 import SideNav from "./SideNav";
 import { Route , Switch} from "react-router-dom";

@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {addCampaign, ProjectModel, projectTypes} from "../../store/campaignFormInfo";
+import {addCampaign} from "../../store/campaignFormSlice";
 import M from 'materialize-css'
 import {connect} from "react-redux";
-import {v4 as uuidv4} from 'uuid';
+import {v4 as uuidV4} from 'uuid';
+import ProjectModel from "../../dataModels/ProjectModel";
+import {projectTypes} from "../../dataModels/ProjectTypes";
 
 class CampaignForm extends Component {
-    state = ProjectModel(uuidv4())
+    state = ProjectModel()
 
     componentDidMount() {
         M.FormSelect.init(document.getElementById('project_type'))
@@ -93,7 +95,7 @@ class CampaignForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addProject(this.state)
+        this.props.addProject({...this.state, id: uuidV4()})
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }
 

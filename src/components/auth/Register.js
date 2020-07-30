@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Link, withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {registerUser} from "../../store/authentication";
+import {registerUser} from "../../store/authenticationSlice";
 import classnames from "classnames";
 
 class Register extends Component {

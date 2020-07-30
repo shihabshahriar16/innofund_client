@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import HeaderImg from "../layout/HeaderImg"
+import ProjectShowCasing from "../ProjectShowCasing/ProjectShowCasing";
 
 class Landing extends Component {
     componentDidMount() {
@@ -14,6 +15,7 @@ class Landing extends Component {
     }
 
     render() {
+        const loggedIn = true;
         return (
             <div>
                 <HeaderImg/>
@@ -22,6 +24,7 @@ class Landing extends Component {
                         <h4>
                             Welcome to <b>Innofund</b>
                         </h4>
+                        {loggedIn ? <ProjectShowCasing/> : null}
                     </div>
                 </div>
             </div>
