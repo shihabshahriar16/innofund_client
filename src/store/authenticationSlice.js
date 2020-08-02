@@ -3,7 +3,7 @@ import axios from "axios";
 import qs from "querystring";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import {getErrors} from "./errorReducer";
+import {getErrors} from "./errorReducerSlice";
 
 const isEmpty = require('is-empty');
 
