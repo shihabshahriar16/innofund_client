@@ -17,7 +17,7 @@ const CampaignForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(project)
+        // console.log(project)
         dispatch(addCampaign({...project, id: uuidV4()}))
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }

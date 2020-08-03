@@ -10,6 +10,8 @@ export default function ProjectModel() {
         pledge_amount: 0,
         number_of_investors: 0,
         project_status_id: '',
-        project_showcasing_video_url: ''
+        project_showcasing_video_url: '',
+        comments: [],
+        faqs: [],
     }
 }
