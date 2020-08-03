@@ -52,7 +52,7 @@ const ProjectDetails = (props) => {
                 <div id="test-swipe-2" className="col s12"><Comments project={project}/></div>
 
             </div>
-
+            <div style={{marginBottom: '30px'}}/>
         </div>
 
     );

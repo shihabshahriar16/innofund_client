@@ -47,11 +47,11 @@ const FAQs = ({project}) => {
                     faq.answers.map(answer => (<div key={answer}>{answer}</div>))
                 }</div>
             </div>)) : <p>There is currently no faq in this project</p>}
-            <div>
+            <span className='row' style={{display: 'flex'}}>
                 <input type='text' placeholder='Add a question' value={newFaq.question} onChange={handleChange}
-                       name='question'/>
-                <button onClick={handleSubmitFaq} className='btn-small'>Create a FAQ</button>
-            </div>
+                       name='question' className='col l10' style={{marginRight: '20px'}}/>
+                <button onClick={handleSubmitFaq} className='btn-small indigo col l2' style={{height: '45px'}}>Create a FAQ</button>
+            </span>
         </div>
 
     );
