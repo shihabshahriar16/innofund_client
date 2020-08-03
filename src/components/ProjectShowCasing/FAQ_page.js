@@ -12,9 +12,6 @@ function FAQ_model() {
 
 const FAQs = ({project}) => {
     const dispatch = useDispatch()
-    // const f = FAQ_model();
-    // f.question = 'fsldjflsdfj'
-    // f.answers = ['sdlfjslf', 'skdlfajl', 'salfjlasdjf']
     const [faqs, setFaqs] = useState(project.faqs)
     console.log(faqs)
     const [newFaq, setNewFaq] = useState(FAQ_model())
@@ -53,9 +50,11 @@ const FAQs = ({project}) => {
             {!empty ? faqs.map(faq => (<div id={faq.question}>
                 <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{faq.question}</div>
                 <div>{
-                    faq.answers.map(answer => (<li style={{fontSize: '15px', color: '#19ca99', fontWeight: 'bold'}} key={answer}>{answer}</li>))
+                    faq.answers.map(answer => (<li style={{fontSize: '15px', color: '#19ca99', fontWeight: 'bold'}}
+                                                   key={answer}>{answer}</li>))
                 }</div>
-                <input type='text' placeholder='Add Answer' value={newAnswer} onChange={event => setNewAnswer(event.target.value)}/>
+                <input type='text' placeholder='Add Answer' value={newAnswer}
+                       onChange={event => setNewAnswer(event.target.value)}/>
                 <button className='btn-small' onClick={(event) => addAnswer(event, faq)}>Add an Answer</button>
             </div>)) : <p className='project_attribute center' style={{fontSize: '30px', marginBottom: '30px'}}>There is
                 currently no faq in this project</p>}
