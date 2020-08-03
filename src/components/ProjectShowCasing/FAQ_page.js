@@ -33,7 +33,7 @@ const FAQs = ({project}) => {
             dispatch(addFaqToParticularProject({id: project.id, newFaq}));
             setNewFaq(FAQ_model());
         } else {
-            alert('This question is already there. Select a new one')
+            alert('This question is already there. Add a new one')
         }
     }
     const [newAnswer, setNewAnswer] = useState('')
@@ -57,7 +57,7 @@ const FAQs = ({project}) => {
                        onChange={event => setNewAnswer(event.target.value)}/>
                 <button className='btn-small' onClick={(event) => addAnswer(event, faq)}>Add an Answer</button>
             </div>)) : <p className='project_attribute center' style={{fontSize: '30px', marginBottom: '30px'}}>There is
-                currently no faq in this project</p>}
+                currently no FAQ in this project</p>}
             <div className='row' style={{display: 'flex'}}>
                 <input type='text' placeholder='Add a question' value={newFaq.question} onChange={handleChange}
                        name='question' className='col s10' style={{marginRight: '20px'}}/>
