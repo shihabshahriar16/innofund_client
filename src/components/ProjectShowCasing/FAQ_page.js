@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addFaqToParticularProject} from "../../store/campaignFormSlice";
+import {addFaqToParticularProject, addWholeFaqList} from "../../store/campaignFormSlice";
 import produce from "immer";
 
 function FAQ_model() {
@@ -11,22 +11,19 @@ function FAQ_model() {
 }
 
 const FAQs = ({project}) => {
-    const dispatch = useDispatch()
-    // const f = FAQ_model();
-    // f.question = 'fsldjflsdfj'
-    // f.answers = ['sdlfjslf', 'skdlfajl', 'salfjlasdjf']
-    const [faqs, setFaqs] = useState(project.faqs)
-    console.log(faqs)
+    const [newAnswer, setNewAnswer] = useState('')
     const [newFaq, setNewFaq] = useState(FAQ_model())
-    console.log(newFaq)
-
+    const [faqs, setFaqs] = useState(project.faqs)
+    const dispatch = useDispatch()
     const empty = faqs.length === 0
+
     const handleChange = event => {
         const {name, value} = event.target
         setNewFaq(produce(faq => {
             faq[name] = value
         }))
     }
+
     const handleSubmitFaq = event => {
         const index = faqs.findIndex(faq => faq.question === newFaq.question)
         if (index < 0) {
@@ -36,22 +33,40 @@ const FAQs = ({project}) => {
             dispatch(addFaqToParticularProject({id: project.id, newFaq}));
             setNewFaq(FAQ_model());
         } else {
-            alert('This question is already there. Select a new one')
+            alert('This question is already there. Add a new one')
         }
+    }
+
+    const addAnswer = (event, faq) => {
+        setFaqs(produce(faqs => {
+            const index = faqs.findIndex(fa => fa.question === faq.question)
+            faqs[index].answers.push(newAnswer)
+        }))
+        console.log(faqs)
+        dispatch(addWholeFaqList({id: project.id, faqs}))
+        setNewAnswer('')
     }
     return (
         <div>
             {!empty ? faqs.map(faq => (<div id={faq.question}>
-                <div>{faq.question}</div>
+                <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{faq.question}</div>
                 <div>{
-                    faq.answers.map(answer => (<div key={answer}>{answer}</div>))
+                    faq.answers.map(answer => (<li style={{fontSize: '15px', color: '#19ca99', fontWeight: 'bold'}}
+                                                   key={answer}>{answer}</li>))
                 }</div>
-            </div>)) : <p>There is currently no faq in this project</p>}
-            <div>
+                <input type='text' placeholder='Add Answer' value={newAnswer}
+                       onChange={event => setNewAnswer(event.target.value)}/>
+                <button className='btn-small' onClick={(event) => addAnswer(event, faq)}>Add an Answer</button>
+            </div>)) : <p className='project_attribute center' style={{fontSize: '30px', marginBottom: '30px'}}>There is
+                currently no FAQ in this project</p>}
+            <div className='row' style={{display: 'flex'}}>
                 <input type='text' placeholder='Add a question' value={newFaq.question} onChange={handleChange}
-                       name='question'/>
-                <button onClick={handleSubmitFaq} className='btn-small'>Create a FAQ</button>
+                       name='question' className='col s10' style={{marginRight: '20px'}}/>
+                <button onClick={handleSubmitFaq} className='btn-small indigo col s2' style={{height: '45px'}}>Create a
+                    FAQ
+                </button>
             </div>
+
         </div>
 
     );

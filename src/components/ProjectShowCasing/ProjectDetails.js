@@ -16,8 +16,8 @@ const ProjectDetails = (props) => {
 
     return (
         <div className='container'>
-            <div className='row_even'>
-                <span className='name_font'>{project.project_name}</span>
+            <div className='center-align' style={{marginTop: '20px', marginBottom: '20px'}}>
+                <span className='name_font center'>{project.project_name}</span>
             </div>
             <div className='row left-align'>
                 <div className='col l8'>
@@ -52,7 +52,7 @@ const ProjectDetails = (props) => {
                 <div id="test-swipe-2" className="col s12"><Comments project={project}/></div>
 
             </div>
-
+            <div style={{marginBottom: '30px'}}/>
         </div>
 
     );
