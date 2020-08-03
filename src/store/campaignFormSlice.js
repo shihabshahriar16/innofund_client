@@ -20,6 +20,13 @@ const store = createSlice({
                 projects[index].faqs.push(action.payload.newFaq)
             }
         },
+        addWholeFaqList: (projects, action) => {
+            const index = projects.findIndex(project => project.id === action.payload.id)
+            const faqList = action.payload.faqs
+            if (index >= 0) {
+                projects[index].faqs = faqList
+            }
+        },
         addCommentToParticularProject: (projects, action) => {
             const index = projects.findIndex(project => project.id === action.payload.id)
             if (index >= 0) {
@@ -33,5 +40,5 @@ const store = createSlice({
 export const selectProjectByID = (state, id) => state.projectsInStore.find(project => project.id === id)
 
 // selector
-export const {addCampaign, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject} = store.actions
+export const {addCampaign, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
 export default store.reducer

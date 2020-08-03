@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addFaqToParticularProject} from "../../store/campaignFormSlice";
+import {addFaqToParticularProject, addWholeFaqList} from "../../store/campaignFormSlice";
 import produce from "immer";
 
 function FAQ_model() {
@@ -11,19 +11,19 @@ function FAQ_model() {
 }
 
 const FAQs = ({project}) => {
-    const dispatch = useDispatch()
-    const [faqs, setFaqs] = useState(project.faqs)
-    console.log(faqs)
+    const [newAnswer, setNewAnswer] = useState('')
     const [newFaq, setNewFaq] = useState(FAQ_model())
-    console.log(newFaq)
-
+    const [faqs, setFaqs] = useState(project.faqs)
+    const dispatch = useDispatch()
     const empty = faqs.length === 0
+
     const handleChange = event => {
         const {name, value} = event.target
         setNewFaq(produce(faq => {
             faq[name] = value
         }))
     }
+
     const handleSubmitFaq = event => {
         const index = faqs.findIndex(faq => faq.question === newFaq.question)
         if (index < 0) {
@@ -36,13 +36,14 @@ const FAQs = ({project}) => {
             alert('This question is already there. Add a new one')
         }
     }
-    const [newAnswer, setNewAnswer] = useState('')
+
     const addAnswer = (event, faq) => {
-        console.log(faq)
         setFaqs(produce(faqs => {
-            const toChange = faqs.find(fa => fa.question === faq.question)
-            toChange.answers.push(newAnswer)
+            const index = faqs.findIndex(fa => fa.question === faq.question)
+            faqs[index].answers.push(newAnswer)
         }))
+        console.log(faqs)
+        dispatch(addWholeFaqList({id: project.id, faqs}))
         setNewAnswer('')
     }
     return (
