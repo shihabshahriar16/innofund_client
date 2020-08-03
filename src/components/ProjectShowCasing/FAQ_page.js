@@ -39,6 +39,15 @@ const FAQs = ({project}) => {
             alert('This question is already there. Select a new one')
         }
     }
+    const [newAnswer, setNewAnswer] = useState('')
+    const addAnswer = (event, faq) => {
+        console.log(faq)
+        setFaqs(produce(faqs => {
+            const toChange = faqs.find(fa => fa.question === faq.question)
+            toChange.answers.push(newAnswer)
+        }))
+        setNewAnswer('')
+    }
     return (
         <div>
             {!empty ? faqs.map(faq => (<div id={faq.question}>
@@ -46,12 +55,18 @@ const FAQs = ({project}) => {
                 <div>{
                     faq.answers.map(answer => (<div key={answer}>{answer}</div>))
                 }</div>
-            </div>)) : <p>There is currently no faq in this project</p>}
-            <span className='row' style={{display: 'flex'}}>
+                <input type='text' placeholder='Add Answer' value={newAnswer} onChange={event => setNewAnswer(event.target.value)}/>
+                <button className='btn-small' onClick={(event) => addAnswer(event, faq)}>Add an Answer</button>
+            </div>)) : <p className='project_attribute center' style={{fontSize: '30px', marginBottom: '30px'}}>There is
+                currently no faq in this project</p>}
+            <div className='row' style={{display: 'flex'}}>
                 <input type='text' placeholder='Add a question' value={newFaq.question} onChange={handleChange}
-                       name='question' className='col l10' style={{marginRight: '20px'}}/>
-                <button onClick={handleSubmitFaq} className='btn-small indigo col l2' style={{height: '45px'}}>Create a FAQ</button>
-            </span>
+                       name='question' className='col s10' style={{marginRight: '20px'}}/>
+                <button onClick={handleSubmitFaq} className='btn-small indigo col s2' style={{height: '45px'}}>Create a
+                    FAQ
+                </button>
+            </div>
+
         </div>
 
     );
