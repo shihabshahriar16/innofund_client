@@ -4,9 +4,5 @@ import projectsInStore from "../store/campaignFormSlice";
 import {configureStore} from "@reduxjs/toolkit";
 
 export default configureStore({
-    reducer: {
-        auth,
-        errors,
-        projectsInStore
-    }
+    reducer: {auth, errors, projectsInStore}
 });

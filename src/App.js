@@ -29,6 +29,7 @@ import ProjectsBacked from './components/dashboard/ProjectsBacked.js';
 import Settings from './components/dashboard/Settings'
 import Inbox from './components/dashboard/Inbox';
 import Bookmarks from './components/dashboard/Bookmarks';
+import ProjectDetails from "./components/ProjectShowCasing/ProjectDetails";
 
 axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
 //axios.defaults.baseURL = "http://localhost:5000";
@@ -61,8 +62,10 @@ function App() {
                 <Router history={history}>
                     <Switch>
                         <React.Fragment>
+
                             <Navbar/>
                             <div className="Main">
+                                <Route exact path={router.PROJECT_DETAILS} component={ProjectDetails}/>
                                 <Route exact path={router.START_A_CAMPAIGN} component={CampaignForm}/>
                                 <Route exact path="/" component={Landing}/>
                                 <Route exact path={router.REGISTER} component={Register}/>
