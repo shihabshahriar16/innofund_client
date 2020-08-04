@@ -12,7 +12,6 @@ function FAQ_model() {
 }
 
 const FAQs = ({project}) => {
-    const [newAnswer, setNewAnswer] = useState('')
     const [newFaq, setNewFaq] = useState(() => FAQ_model())
     const [faqs, setFaqs] = useState(() => project.faqs)
     const dispatch = useDispatch()
@@ -88,9 +87,9 @@ export default FAQs;
 
 const AddAnswer = ({addAnswer, faq}) => {
     const [newAns, setNewAns] = useState(() => '')
-    return <div>
+    return <div className='row' style={{display: 'flex'}}>
         <input type='text' placeholder='Add Answer' value={newAns}
-               onChange={event => setNewAns(event.target.value)}/>
-        <button type='submit' className='btn-small' onClick={(event) => addAnswer(faq, newAns, setNewAns)}>Add an Answer</button>
+               onChange={event => setNewAns(event.target.value)} className='col s9 offset-l1' style={{marginRight: '20px'}}/>
+        <button type='submit' className='btn-small col s2' onClick={(event) => addAnswer(faq, newAns, setNewAns)}>Add an Answer</button>
     </div>
 }
