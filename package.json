@@ -20,6 +20,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.0",
     "typeface-montserrat": "0.0.75",
+    "use-immer": "^0.4.1",
     "uuid": "^8.2.0"
   },
   "devDependencies": {

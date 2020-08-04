@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addFaqToParticularProject, addWholeFaqList} from "../../store/campaignFormSlice";
 import produce from "immer";
+import {useImmer} from "use-immer";
 
 function FAQ_model() {
     return {
@@ -12,10 +13,14 @@ function FAQ_model() {
 
 const FAQs = ({project}) => {
     const [newAnswer, setNewAnswer] = useState('')
-    const [newFaq, setNewFaq] = useState(FAQ_model())
-    const [faqs, setFaqs] = useState(project.faqs)
+    const [newFaq, setNewFaq] = useState(() => FAQ_model())
+    const [faqs, setFaqs] = useState(() => project.faqs)
     const dispatch = useDispatch()
     const empty = faqs.length === 0
+
+    useEffect(() => {
+        dispatch(addWholeFaqList({id: project.id, faqs}))
+    }, [faqs])
 
     const handleChange = event => {
         const {name, value} = event.target
@@ -37,27 +42,33 @@ const FAQs = ({project}) => {
         }
     }
 
-    const addAnswer = (event, faq) => {
-        setFaqs(produce(faqs => {
-            const index = faqs.findIndex(fa => fa.question === faq.question)
-            faqs[index].answers.push(newAnswer)
-        }))
+    const addAnswer = (faq, newAns, setNewAns) => {
         console.log(faqs)
-        dispatch(addWholeFaqList({id: project.id, faqs}))
-        setNewAnswer('')
+        setFaqs(produce(faqs => {
+                faqs.forEach(f => {
+                    if (f.question === faq.question) {
+                        f.answers.push(newAns)
+                    }
+                })
+            })
+        )
+        setNewAns('')
     }
     return (
         <div>
-            {!empty ? faqs.map(faq => (<div id={faq.question}>
-                <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{faq.question}</div>
-                <div>{
-                    faq.answers.map(answer => (<li style={{fontSize: '15px', color: '#19ca99', fontWeight: 'bold'}}
-                                                   key={answer}>{answer}</li>))
-                }</div>
-                <input type='text' placeholder='Add Answer' value={newAnswer}
-                       onChange={event => setNewAnswer(event.target.value)}/>
-                <button className='btn-small' onClick={(event) => addAnswer(event, faq)}>Add an Answer</button>
-            </div>)) : <p className='project_attribute center' style={{fontSize: '30px', marginBottom: '30px'}}>There is
+            {!empty ? faqs.map(faq => {
+                return (<div id={faq.question}>
+                    <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{faq.question}</div>
+                    <div>{
+                        faq.answers.map(answer => (<li style={{fontSize: '15px', color: '#19ca99', fontWeight: 'bold'}}
+                                                       key={answer}>{answer}</li>))
+                    }</div>
+                    {/*<input type='text' placeholder='Add Answer' value={newAnswer}*/}
+                    {/*       onChange={event => setNewAnswer(event.target.value)}/>*/}
+                    {/*<button type='submit' className='btn-small' onClick={(event) => addAnswer(faq)}>Add an Answer</button>*/}
+                    <AddAnswer addAnswer={addAnswer} faq={faq}/>
+                </div>)
+            }) : <p className='project_attribute center' style={{fontSize: '30px', marginBottom: '30px'}}>There is
                 currently no FAQ in this project</p>}
             <div className='row' style={{display: 'flex'}}>
                 <input type='text' placeholder='Add a question' value={newFaq.question} onChange={handleChange}
@@ -73,3 +84,13 @@ const FAQs = ({project}) => {
 };
 
 export default FAQs;
+
+
+const AddAnswer = ({addAnswer, faq}) => {
+    const [newAns, setNewAns] = useState(() => '')
+    return <div>
+        <input type='text' placeholder='Add Answer' value={newAns}
+               onChange={event => setNewAns(event.target.value)}/>
+        <button type='submit' className='btn-small' onClick={(event) => addAnswer(faq, newAns, setNewAns)}>Add an Answer</button>
+    </div>
+}
