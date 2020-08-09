@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Switch, Route, Router} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import {logoutUser} from "./store/authenticationSlice";
-import {Provider} from "react-redux";
+import {Provider, useDispatch} from "react-redux";
 import store from "./store/configureStore";
 import axios from "axios";
 import {createBrowserHistory} from "history";
@@ -30,6 +30,7 @@ import Settings from './components/dashboard/Settings'
 import Inbox from './components/dashboard/Inbox';
 import Bookmarks from './components/dashboard/Bookmarks';
 import ProjectDetails from "./components/ProjectShowCasing/ProjectDetails";
+import {loadCampaign} from "./store/campaignFormSlice";
 
 axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
 //axios.defaults.baseURL = "http://localhost:5000";
@@ -56,6 +57,8 @@ if (localStorage.jwtToken) {
 const history = createBrowserHistory();
 
 function App() {
+    const dispatch = useDispatch()
+    useEffect(() => (dispatch(loadCampaign())), [])
     return (
         <div className="App">
             <Provider store={store}>
