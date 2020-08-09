@@ -1,10 +1,14 @@
 import {createSlice} from "@reduxjs/toolkit";
 import ProjectModel from "../dataModels/ProjectModel";
+import axios from "axios";
 
 const store = createSlice({
     name: 'projectsInStore',
     initialState: [],
     reducers: {
+        loadAll: (projects, action) => {
+            projects=action.payload;
+        },
         addCampaign: (projects, action) => {
             //payload will be the project object
             projects.push(action.payload);
@@ -36,9 +40,21 @@ const store = createSlice({
     }
 })
 
+export const loadCampaign = (dispatch) => {
+    axios
+    .get("/api/project")
+    .then(res => {
+        console.log(res.data);
+        dispatch(loadAll(res.data))
+    })
+    .catch(err => {
+        console.log(err)
+    });
+}
+
 // selector
 export const selectProjectByID = (state, id) => state.projectsInStore.find(project => project.id === id)
 
 // selector
-export const {addCampaign, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
+export const {loadAll,addCampaign, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
 export default store.reducer

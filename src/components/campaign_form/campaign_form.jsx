@@ -18,7 +18,7 @@ const CampaignForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(project)
-        dispatch(addCampaign({...project, id: uuidV4()}))
+        dispatch(addCampaign(project))
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }
 
@@ -32,20 +32,6 @@ const CampaignForm = () => {
 
     return (
         <div>
-            {/*<div className="navbar-fixed">*/}
-            {/*    <nav style={{height: "64px"}} className="white z-depth-2">*/}
-            {/*        <div className="nav-wrapper">*/}
-            {/*            <ul className="left">*/}
-            {/*                <li><LinkBrand to="/"><img style={{height: "60px"}} src={logo}*/}
-            {/*                                           alt="INNOFUND"/></LinkBrand></li>*/}
-            {/*            </ul>*/}
-            {/*            <ul className="right">*/}
-            {/*                <li><LinkStyled to="/about">About Us</LinkStyled></li>*/}
-            {/*            </ul>*/}
-            {/*        </div>*/}
-            {/*    </nav>*/}
-            {/*</div>*/}
-            {/*NavBar*/}
             <div className="container">
                 <h3>Home Start A Project</h3>
                 <form onSubmit={handleSubmit}>

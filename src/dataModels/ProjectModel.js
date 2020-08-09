@@ -1,6 +1,7 @@
 export default function ProjectModel() {
     return {
         id: '',
+        created_by_id: '',
         project_name: '',
         project_type: '',
         project_description: '',
