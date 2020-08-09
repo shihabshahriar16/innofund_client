@@ -7,7 +7,7 @@ const store = createSlice({
     initialState: [],
     reducers: {
         loadAll: (projects, action) => {
-            return projects = action.payload;
+           action.payload.map(project => projects.push(project));
         },
         addCampaign: (projects, action) => {
             //payload will be the project object
