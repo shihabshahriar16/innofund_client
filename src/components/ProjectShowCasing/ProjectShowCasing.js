@@ -14,7 +14,7 @@ const ProjectShowCasing = () => {
         dispatch(deleteCampaign(id))
     }
     useEffect(() => {
-        loadCampaign(dispatch)
+        loadCampaign()
     },[])
 
     return (

@@ -40,7 +40,7 @@ const store = createSlice({
     }
 })
 
-export const loadCampaign = (dispatch) => {
+export const loadCampaign = () => (dispatch) => {
     axios
     .get("/api/project")
     .then(res => {
