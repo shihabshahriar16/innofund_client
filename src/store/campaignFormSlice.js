@@ -40,7 +40,8 @@ const store = createSlice({
     }
 })
 
-export const loadCampaign = () => (dispatch) => {
+export const loadCampaign = () => dispatch => {
+    console.log('inside axios')
     axios
     .get("/api/project")
     .then(res => {
@@ -48,7 +49,7 @@ export const loadCampaign = () => (dispatch) => {
         dispatch(loadAll(res.data))
     })
     .catch(err => {
-        console.log(err)
+        console.log(err.message)
     });
 }
 
