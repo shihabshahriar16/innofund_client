@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect} from 'react';
 import {useDispatch, useSelector } from "react-redux";
 import { loadCampaign, deleteCampaign } from "../../store/campaignFormSlice";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ const ProjectShowCasing = () => {
                         <div className="col s12 m7">
                             <div className="card">
                                 <div className="card-image">
-                                    <img src="../../images/headerimg2.jpg"/>
+                                    <img src="../../images/headerimg2.jpg" alt='cardimg'/>
                                         <span className="card-title">{project.project_name} </span>
                                 </div>
                                 <div className="card-content">
@@ -33,7 +33,7 @@ const ProjectShowCasing = () => {
                                 </div>
                                     <div>
                                         <div className="card-action">
-                                            <a href="#">
+                                            
                                                 <button className='btn-small' onClick={() => handleDelete(project.id)}>Delete</button>
                                                 <Link to={{
                                                     pathname: router.PROJECT_DETAILS,
@@ -41,7 +41,6 @@ const ProjectShowCasing = () => {
                                                 }}>
                                                     <button className='btn-large'>Details</button>
                                                 </Link>
-                                            </a>
                                         </div>
                                     </div>
                             </div>

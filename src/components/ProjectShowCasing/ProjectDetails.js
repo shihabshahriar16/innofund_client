@@ -22,7 +22,7 @@ const ProjectDetails = (props) => {
             <div className='row left-align'>
                 <div className='col l8'>
                     <div className="video-container">
-                        <iframe src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameBorder="0" allowFullScreen/>
+                        <iframe title="12345"src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameBorder="0" allowFullScreen/>
                     </div>
                 </div>
                 <div className='col l4 right-align'>
