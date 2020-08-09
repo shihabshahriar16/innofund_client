@@ -7,16 +7,16 @@ import router from "../../routing/routing_variables";
 
 const ProjectShowCasing = () => {
     const dispatch = useDispatch()
-    dispatch(loadCampaign())
     //const [projects,setProjects]=useState(useSelector(state => state.projectsInStore))
     const projects = useSelector(state => state.projectsInStore)
     // console.log(projects);
     const handleDelete = (id) => {
         dispatch(deleteCampaign(id))
     }
-    // useEffect(() => {
-    //     console.log('It has run')
-    // },[])
+    useEffect(() => {
+        console.log('It has run')
+        dispatch(loadCampaign())
+    },[projects])
 
     return (
         <div>

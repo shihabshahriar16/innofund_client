@@ -7,7 +7,7 @@ const store = createSlice({
     initialState: [],
     reducers: {
         loadAll: (projects, action) => {
-            projects=action.payload;
+            return projects = action.payload;
         },
         addCampaign: (projects, action) => {
             //payload will be the project object
@@ -43,19 +43,19 @@ const store = createSlice({
 export const loadCampaign = () => dispatch => {
     console.log('inside axios')
     axios
-    .get("/api/project")
-    .then(res => {
-        console.log(res.data);
-        dispatch(loadAll(res.data))
-    })
-    .catch(err => {
-        console.log(err.message)
-    });
+        .get("/api/project")
+        .then(res => {
+            console.log(res.data);
+            dispatch(loadAll(res.data))
+        })
+        .catch(err => {
+            console.log(err.message)
+        });
 }
 
 // selector
 export const selectProjectByID = (state, id) => state.projectsInStore.find(project => project.id === id)
 
 // selector
-export const {loadAll,addCampaign, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
+export const {loadAll, addCampaign, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
 export default store.reducer
