@@ -5,8 +5,6 @@ import App from './App';
 import store from '../src/store/configureStore'
 import {Provider} from "react-redux";
 
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
