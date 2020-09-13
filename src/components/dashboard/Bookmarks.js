@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import SideNav from './SideNav'
+
 
 class Bookmarks extends Component {
     render() {
         return (
             <div>
-                <SideNav/>
-            <h5>My Bookmarks</h5>
+                
+            <h5>My Bookmarks will be shown here</h5>
             </div>
         )
     }

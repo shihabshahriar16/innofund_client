@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import SideNav from './SideNav';
 
 class Inbox extends Component {
     render() {
         return (
             <div>
-                            <SideNav />
-            <h5>My Inbox</h5>
+            <h5>All My messages will be shown here</h5>
             </div>
         )
     }

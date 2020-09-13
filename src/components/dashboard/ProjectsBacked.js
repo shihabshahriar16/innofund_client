@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import SideNav from './SideNav';
+
 
 class ProjectsBacked extends Component {
     render() {
         return (
             <div>
-                <SideNav />
-                <h5>Projects I have backed</h5>
+                
+                <h5>All the Projects that I have backed will be shown here</h5>
             </div>
         )
     }
