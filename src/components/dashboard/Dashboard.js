@@ -16,6 +16,9 @@ class Dashboard extends Component {
         this.props.logoutUser();
     };
 
+    componentDidMount(){
+        M.Tabs.init(document.getElementById('tabs-swipe-demo'));
+    }
 
     render() {
 
