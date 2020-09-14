@@ -23,20 +23,20 @@ class DashboardUser extends Component {
         return (
             <div>
                 {/* <HeaderImg /> */}
-                <div class="row">
-                    <div class="col s12">
-                        <ul class="tabs">
-                            <li class="tab col s3"><a href="#test1">My projects</a></li>
-                            <li class="tab col s3"><a href="#test2">Inbox</a></li>
-                            <li class="tab col s3"><a href="#test3">Projects backed</a></li>
-                            <li class="tab col s3"><a href="#test4">Bookmarks</a></li>
-                            <li class="tab col s3"><a href="#test4">Settings</a></li>
+                <div className="row">
+                    <div className="col s12">
+                        <ul id="tabs-swipe-demo" className="tabs" style={{fontWeight: 'bold', fontColor: 'green'}}>
+                            <li className="tab col s3"><a href="#test1">My projects</a></li>
+                            <li className="tab col s3"><a href="#test2">Inbox</a></li>
+                            <li className="tab col s3"><a href="#test3">Projects backed</a></li>
+                            <li className="tab col s3"><a href="#test4">Bookmarks</a></li>
+                            <li className="tab col s3"><a href="#test4">Settings</a></li>
                         </ul>
                     </div>
-                    <div id="test1" class="col s12"><MyProjects/></div>
-                    <div id="test2" class="col s12"><Inbox/></div>
-                    <div id="test3" class="col s12"><ProjectsBacked/></div>
-                    <div id="test4" class="col s12"><Bookmarks/></div>
+                    <div id="test1" className="col s12"><MyProjects/></div>
+                    <div id="test2" className="col s12"><Inbox/></div>
+                    <div id="test3" className="col s12"><ProjectsBacked/></div>
+                    <div id="test4" className="col s12"><Bookmarks/></div>
                 </div>
             </div>
         );

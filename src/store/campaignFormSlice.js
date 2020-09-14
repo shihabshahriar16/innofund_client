@@ -8,7 +8,11 @@ const store = createSlice({
     initialState: [],
     reducers: {
         loadAll: (projects, action) => {
-            action.payload.map(project => projects.push(project));
+            action.payload.map(project => {
+                if (!projects.some((pro)=> pro.id == project.id)) {
+                    projects.push(project)
+                }
+            });
         },
         addCampaign: (projects, action) => {
             projects.push(action.payload);
@@ -55,14 +59,14 @@ export const loadCampaign = () => dispatch => {
 export const createCampaign = (newProject) => dispatch => {
     console.log(newProject);
     axios
-    .post("/api/project/create", qs.stringify(newProject))
-    .then((res) => {
-        console.log(res.data);
-        dispatch(addCampaign(newProject));
-    }) 
-    .catch((err) => {
-        console.log(err);
-    });
+        .post("/api/project/create", qs.stringify(newProject))
+        .then((res) => {
+            console.log(res.data);
+            dispatch(addCampaign(newProject));
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 }
 // selector
 export const selectProjectByID = (state, id) => state.projectsInStore.find(project => project.id === id)

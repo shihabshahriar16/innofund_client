@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { logoutUser } from "../../store/authenticationSlice";
 import HeaderImg from "../layout/HeaderImg"
 import ProjectShowCasing from "../ProjectShowCasing/ProjectShowCasing";
@@ -16,18 +16,16 @@ class Dashboard extends Component {
         this.props.logoutUser();
     };
 
-    componentDidMount(){
-        M.Tabs.init(document.getElementById('tabs-swipe-demo'));
-    }
-
     render() {
-
-        //uncomment the following for authorization
-        // const {user} = this.props.auth;
         return (
             <div >
                 <HeaderImg />
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }} >
+                <Link to="/dashboard_user"
+                        //style={{ margin: "10px", width: "140px", borderRadius: "36px", letterSpacing: "1.5px" }}
+                        className="btn-large waves-effect hoverable indigo darken-1">
+                        Go To Your Dashboard
+                    </Link>
                     <p className="flow-text grey-text text-darken-1">
                         Hi, You are now a part of our great community<br /><br />
                         Search projects or start your own campaign<br /><br />
