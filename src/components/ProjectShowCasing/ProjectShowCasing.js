@@ -1,44 +1,46 @@
-import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {deleteCampaign} from "../../store/campaignFormSlice";
-import {Link} from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+//import { deleteCampaign } from "../../store/campaignFormSlice";
+import { Link } from "react-router-dom";
 import router from "../../routing/routing_variables";
-import Card from "../../Cards/CardUI";
-import img1 from "../../images/logo.png";
+import cardimg from "../../images/cardimg.jpg";
+import { loadCampaign } from "../../store/campaignFormSlice";
 
 const ProjectShowCasing = () => {
     const dispatch = useDispatch()
-    //const [projects,setProjects]=useState(useSelector(state => state.projectsInStore))
+    useEffect(() => {
+        dispatch(loadCampaign());
+    }, [dispatch])
     let projects = useSelector(state => state.projectsInStore)
-    // console.log(projects);
-
-    const handleDelete = (id) => {
-        dispatch(deleteCampaign(id))
-    }
+    // const handleDelete = (id) => {
+    //     dispatch(deleteCampaign(id))
+    // }
     return (
-        <div className="container-fluid d-flex justify-content-center">
-            <div className="row">
-                {projects.map(project => {
-                    /*return <div key={project.id}>
-                        <div>
-                            {project.project_name} {project.project_description} {project.goal_money}
-                        </div>
-                        <button className='btn-small' onClick={() => handleDelete(project.id)}>Delete</button>
-                        <Link to={{
-                            pathname: router.PROJECT_DETAILS,
-                            state: project
-                        }}>
-                            <button className='btn-large'>Details</button>
-                        </Link>
-                    </div>*/
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+            {projects.map(project => {
+                return (
+                    <div key={project.id} style={{ margin: "20px" }} >
+                        <div className="card small">
+                            <div className="card-image">
+                                <img style={{ width: "400px", height: "300px" }} src={cardimg} alt="img1" />
 
-                    return(
-                        <div className="col-md-6">
-                            <Card project ={project} imgsrc={img1} title={project.project_name} body={project.project_description}/>
+                            </div>
+                            <span className="card-title">{project.project_name}</span>
+                            <div className="card-content">
+                                <p>{project.project_description}</p>
+                            </div>
+                            <div className="card-action">
+                                <Link to={{
+                                    pathname: router.PROJECT_DETAILS,
+                                    state: project
+                                }}>
+                                    See More
+                                        </Link>
+                            </div>
                         </div>
-                    )
+                    </div>
+                )
             })}
-            </div>
         </div>
     );
 };

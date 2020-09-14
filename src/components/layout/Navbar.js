@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import styled from 'styled-components';
 import logo from '../../images/logo.png';
 import router from "../../routing/routing_variables";
+import { logoutUser } from "../../store/authenticationSlice";
 const LinkStyled = styled(Link)`
     color: black;
 	:hover {
@@ -19,6 +20,11 @@ const LinkBrand = styled(Link)`
 	}
 `
 class Navbar extends Component {
+    onLogoutClick = e => {
+        e.preventDefault();
+        this.props.history.push("/");
+        this.props.logoutUser();
+    };
     render() {
         return (
             <header className="no-padding">
@@ -59,6 +65,14 @@ class Navbar extends Component {
                                         className="btn waves-effect hoverable indigo darken-1">
                                         Log In
                                     </Link>}
+                                {this.props.auth.isAuthenticated ?
+                                    <button
+                                        onClick={this.onLogoutClick}
+                                        style={{ margin: "10px", width: "140px", borderRadius: "36px", letterSpacing: "1.5px" }}
+                                        className="btn waves-effect hoverable indigo darken-1">
+                                        Logout
+                                    </button> : null
+                                }
                             </ul>
                         </div>
                     </nav>
@@ -68,11 +82,12 @@ class Navbar extends Component {
     }
 }
 Navbar.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
 };
 const mapStateToProps = state => ({
     auth: state.auth,
 });
 export default connect(
-    mapStateToProps,
+    mapStateToProps,{logoutUser}
 )(Navbar);

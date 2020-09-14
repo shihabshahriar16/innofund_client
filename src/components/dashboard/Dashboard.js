@@ -1,10 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 //import { Link } from "react-router-dom";
-import {logoutUser} from "../../store/authenticationSlice";
-//import HeaderImg from "../layout/HeaderImg"
-import SideNav from "./SideNav";
+import { logoutUser } from "../../store/authenticationSlice";
+import HeaderImg from "../layout/HeaderImg"
+import ProjectShowCasing from "../ProjectShowCasing/ProjectShowCasing";
+
 //import { Route , Switch} from "react-router-dom";
 //import  from 'react-router-dom';
 
@@ -17,45 +18,20 @@ class Dashboard extends Component {
 
 
     render() {
-        
-        //uncomment the following for authorization
-       // const {user} = this.props.auth;
-        return (
-            <div>
-                {/* <HeaderImg/> */}
-                
-            
-                <div>
-                    <div className="row">
-                        <div className="col s12 center-align">
-                            <h4>
-                                {/* <b>Hello, </b> {user.name.split(" ")[0]} */}
-                                <p className="flow-text grey-text text-darken-1">
-                                    Hi, You are now a part of our great community<br/><br/>
-                                    Search projects or start your own campaign<br/><br/>
-                                    Imagine it, Believe in it and Nurture it.
-                                </p>
 
-                            </h4>
-                            <button
-                                style={{
-                                    width: "150px",
-                                    borderRadius: "3px",
-                                    letterSpacing: "1.5px",
-                                    marginTop: "1rem"
-                                }}
-                                onClick={this.onLogoutClick}
-                                className="btn btn-large waves-effect waves-light hoverable indigo darken-1"
-                            >
-                                Logout
-                            </button>
-                        </div>
-                    </div>
+        //uncomment the following for authorization
+        // const {user} = this.props.auth;
+        return (
+            <div >
+                <HeaderImg />
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }} >
+                    <p className="flow-text grey-text text-darken-1">
+                        Hi, You are now a part of our great community<br /><br />
+                        Search projects or start your own campaign<br /><br />
+                        Imagine it, Believe in it and Nurture it.
+                    </p>
+                    <ProjectShowCasing />
                 </div>
-                
-                
-                <SideNav />
-                    
             </div>
         );
     }
@@ -71,5 +47,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    {logoutUser}
+    { logoutUser }
 )(Dashboard);

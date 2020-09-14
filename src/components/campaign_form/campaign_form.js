@@ -5,7 +5,7 @@ import {useDispatch} from "react-redux";
 import ProjectModel from "../../dataModels/ProjectModel";
 import {projectTypes} from "../../dataModels/ProjectTypes";
 import produce from 'immer'
-import {addCampaign} from "../../store/campaignFormSlice";
+import {createCampaign} from "../../store/campaignFormSlice";
 
 const CampaignForm = () => {
     const [project, setProject] = useState(ProjectModel())
@@ -18,7 +18,7 @@ const CampaignForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(project)
-        dispatch(addCampaign(project))
+        dispatch(createCampaign(project))
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }
 
