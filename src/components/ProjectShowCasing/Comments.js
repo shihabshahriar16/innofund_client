@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+//import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {addCommentToParticularProject} from "../../store/campaignFormSlice";
 import produce from "immer";
 
-function FAQ_model() {
-    return {
-        question: '',
-        answers: []
-    }
-}
+// function FAQ_model() {
+//     return {
+//         question: '',
+//         answers: []
+//     }
+// }
 
 const Comments = ({project}) => {
     const dispatch = useDispatch()
@@ -30,7 +31,7 @@ const Comments = ({project}) => {
             alert('This comment is already there. Add a new one')
         }
     }
-    const [newAnswer, setNewAnswer] = useState('')
+    //const [newAnswer, setNewAnswer] = useState('')
     return (
         <div>
             {!empty ? comments.map(comment => (

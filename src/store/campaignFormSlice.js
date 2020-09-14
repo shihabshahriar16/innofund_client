@@ -8,8 +8,9 @@ const store = createSlice({
     initialState: [],
     reducers: {
         loadAll: (projects, action) => {
-            action.payload.map(project => {
-                if (!projects.some((pro)=> pro.id == project.id)) {
+            action.payload.forEach(project => {
+                if (!projects.some(pro=>
+                    pro.id === project.id)) {
                     projects.push(project)
                 }
             });

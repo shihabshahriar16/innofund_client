@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+//import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {addFaqToParticularProject, addWholeFaqList} from "../../store/campaignFormSlice";
 import produce from "immer";
-import {useImmer} from "use-immer";
+//import {useImmer} from "use-immer";
 
 function FAQ_model() {
     return {
@@ -19,7 +20,7 @@ const FAQs = ({project}) => {
 
     useEffect(() => {
         dispatch(addWholeFaqList({id: project.id, faqs}))
-    }, [faqs])
+    }, [dispatch,project.id,faqs])
 
     const handleChange = event => {
         const {name, value} = event.target
