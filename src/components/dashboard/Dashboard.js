@@ -10,12 +10,6 @@ import ProjectShowCasing from "../ProjectShowCasing/ProjectShowCasing";
 //import  from 'react-router-dom';
 
 class Dashboard extends Component {
-    onLogoutClick = e => {
-        e.preventDefault();
-        //this.props.history.push("/");
-        this.props.logoutUser();
-    };
-
     render() {
         return (
             <div >
@@ -24,7 +18,7 @@ class Dashboard extends Component {
                 <Link to="/dashboard_user"
                         //style={{ margin: "10px", width: "140px", borderRadius: "36px", letterSpacing: "1.5px" }}
                         className="btn-large waves-effect hoverable indigo darken-1">
-                        Go To Your Dashboard
+                        Go To Dashboard
                     </Link>
                     <p className="flow-text grey-text text-darken-1">
                         Hi, You are now a part of our great community<br /><br />

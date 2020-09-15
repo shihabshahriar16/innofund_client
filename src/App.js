@@ -24,16 +24,13 @@ import DashboardUser from "./components/dashboardUser/DashboardUser";
 import CampaignForm from "./components/campaign_form/campaign_form";
 import router from "./routing/routing_variables";
 import {setCurrentUser} from "./store/authenticationSlice";
-
-// import MyProjects from './components/dashboardUser/MyProjects';
-// import ProjectsBacked from './components/dashboardUser/ProjectsBacked.js';
-// import Settings from './components/dashboardUser/Settings'
-// import Inbox from './components/dashboardUser/Inbox';
-// import Bookmarks from './components/dashboardUser/Bookmarks';
 import ProjectDetails from "./components/ProjectShowCasing/ProjectDetails";
+import PaymentSuccess from "./components/paymentPages/PaymentSuccess"
+import PaymentFailed from "./components/paymentPages/PaymentFailed"
+import PaymentCancelled from "./components/paymentPages/PaymentCancelled"
 
-axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
-//axios.defaults.baseURL = "http://localhost:5000";
+//axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
+axios.defaults.baseURL = "http://localhost:5000";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -76,16 +73,14 @@ function App() {
                                 <Route exact path={router.FORGOT_PASSWORD} component={ForgotPass}/>
                                 <Route exact path={router.CHANGE_PASSWORD} component={ChangePass}/>
                                 <Route exact path={router.VERIFY_EMAIL} component={VerifyEmail}/>
-                                
 
+                                <Route exact path={"/success"} component={PaymentSuccess}/>
+                                <Route exact path={"/failed"} component={PaymentFailed}/>
+                                <Route exact path={"/cancel"} component={PaymentCancelled}/>
+                                
                                 {/* the following will be private routes */}
                                 <Route exact path="/dashboard" component={Dashboard}/>
                                 <Route exact path="/dashboard_user" component={DashboardUser}/>
-                                {/* <Route exact path="/dashboard/my_projects" component={MyProjects}/>
-                                <Route exact path="/dashboard/projects_backed" component={ProjectsBacked}/>
-                                <Route exact path="/dashboard/settings" component={Settings}/>
-                                <Route exact path="/dashboard/inbox" component={Inbox}/>
-                                <Route exact path="/dashboard/bookmarks" component={Bookmarks}/> */}
                                 
                             </div>
                             <Footer/>
