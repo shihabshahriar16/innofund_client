@@ -17,7 +17,6 @@ const FAQs = ({project}) => {
     const [faqs, setFaqs] = useState(() => project.faqs)
     const dispatch = useDispatch()
     const empty = faqs.length === 0
-
     useEffect(() => {
         dispatch(addWholeFaqList({id: project.id, faqs}))
     }, [dispatch,project.id,faqs])
