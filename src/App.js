@@ -57,8 +57,8 @@ if (localStorage.jwtToken) {
 const history = createBrowserHistory();
 
 function App() {
-    const dispatch = useDispatch()
-    useEffect(() => (dispatch(loadCampaign())), [])
+    // const dispatch = useDispatch()
+    // useEffect(() => (dispatch(loadCampaign())), [])
     return (
         <div className="App">
             <Provider store={store}>
