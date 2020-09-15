@@ -32,8 +32,8 @@ import {setCurrentUser} from "./store/authenticationSlice";
 // import Bookmarks from './components/dashboardUser/Bookmarks';
 import ProjectDetails from "./components/ProjectShowCasing/ProjectDetails";
 
-//axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
+//axios.defaults.baseURL = "http://localhost:5000";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
