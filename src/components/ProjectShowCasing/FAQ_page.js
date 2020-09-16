@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 //import {useDispatch, useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
-import {addFaqToParticularProject, addWholeFaqList} from "../../store/campaignFormSlice";
+import {addFaqToParticularProject, addWholeFaqList, createNewFaq} from "../../store/campaignFormSlice";
 import produce from "immer";
 //import {useImmer} from "use-immer";
 
@@ -35,6 +35,7 @@ const FAQs = ({project}) => {
                 faqs.push(newFaq)
             }));
             dispatch(addFaqToParticularProject({id: project.id, newFaq}));
+            // TODO: push the faq to the database faq table
             setNewFaq(FAQ_model());
         } else {
             alert('This question is already there. Add a new one')
@@ -51,6 +52,7 @@ const FAQs = ({project}) => {
                 })
             })
         )
+        dispatch(createNewFaq({project_id: project.id, question: faq.question, answer: newAns}))
         setNewAns('')
     }
     return (
