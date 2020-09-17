@@ -30,8 +30,8 @@ import PaymentFailed from "./components/paymentPages/PaymentFailed"
 import PaymentCancelled from "./components/paymentPages/PaymentCancelled"
 import CampaignForm2 from "./components/campaign_form/campaign_form_2";
 
-//axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
+//axios.defaults.baseURL = "http://localhost:5000";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
