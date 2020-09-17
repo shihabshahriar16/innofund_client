@@ -30,8 +30,8 @@ import PaymentFailed from "./components/paymentPages/PaymentFailed"
 import PaymentCancelled from "./components/paymentPages/PaymentCancelled"
 import CampaignForm2 from "./components/campaign_form/campaign_form_2";
 
-//axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
+//axios.defaults.baseURL = "http://localhost:5000";
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -76,9 +76,9 @@ function App() {
                                 <Route exact path={router.VERIFY_EMAIL} component={VerifyEmail}/>
                                 <Route exact path={router.PROFIT_SCHEME} component={CampaignForm2}/>
 
-                                <Route exact path={"/success"} component={PaymentSuccess}/>
-                                <Route exact path={"/failed"} component={PaymentFailed}/>
-                                <Route exact path={"/cancel"} component={PaymentCancelled}/>
+                                <Route exact path="/success" component={PaymentSuccess}/>
+                                <Route exact path="/failed" component={PaymentFailed}/>
+                                <Route exact path="/cancel" component={PaymentCancelled}/>
                                 
                                 {/* the following will be private routes */}
                                 <Route exact path="/dashboard" component={Dashboard}/>

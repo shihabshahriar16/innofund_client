@@ -8,9 +8,8 @@ import {profitschemes} from "../../dataModels/Profit_schemes";
 import produce from "immer";
 //import {projectTypes} from "../../dataModels/ProjectTypes";
 
-const CampaignForm2 = (props) => {
-    const [project, setProject] = useState(props.project)
-    const [team_members, setTeam_members] = useState(props.project.team_members)
+const CampaignForm2 = ({project}) => {
+    const [team_members, setTeam_members] = useState(project.team_members)
     const [member, setMember] = useState('')
     const [min_pledge, setMin_pledge] = useState('')
     const dispatch = useDispatch()
@@ -43,7 +42,7 @@ const CampaignForm2 = (props) => {
     }
 
     const handleChange = (event) => {
-        const {name, value} = event.target;
+        const value = event.target.value;
         setMin_pledge(value)
         // console.log(this.state)
     }
