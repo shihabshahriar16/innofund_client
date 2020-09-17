@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 //import ProjectModel from "../dataModels/ProjectModel";
 import axios from "axios";
 import qs from "querystring";
+import {FAQ_model} from "../components/ProjectShowCasing/FAQ_page";
 
 const store = createSlice({
     name: 'projectsInStore',
@@ -9,8 +10,10 @@ const store = createSlice({
     reducers: {
         loadAll: (projects, action) => {
             action.payload.forEach(project => {
-                if (!projects.some(pro=>
+                if (!projects.some(pro =>
                     pro.id === project.id)) {
+                    project.faqs = []
+                    project.comments = []
                     projects.push(project)
                 }
             });
@@ -41,7 +44,31 @@ const store = createSlice({
             if (index >= 0) {
                 projects[index].comments.push(action.payload.comment)
             }
-        }
+        },
+        addFaqQuestionAnswer: (projects, action) => {
+            const {project_id, question, answer} = action.payload.row_obj
+            let ques_found = false
+            // console.log(projects)
+            projects.forEach(project => {
+                // console.log(project)
+                if (project.id === project_id) {
+                    console.log(project.id, 'id printed')
+                    project.faqs.forEach(faq => {
+                        if (faq.question === question) {
+                            ques_found = true
+                            faq.answers.push(answer)
+                        }
+                    })
+
+                    if (!ques_found) {
+                        const model = FAQ_model();
+                        model.question = question
+                        model.answers.push(answer)
+                        project.faqs.push(model)
+                    }
+                }
+            })
+        },
     }
 })
 
@@ -56,6 +83,28 @@ export const loadCampaign = () => dispatch => {
         .catch(err => {
             console.log(err.message)
         });
+
+    axios
+        .get(
+            "api/project/faq/all"
+        )
+        .then(res => {
+            // console.log(res.data, 'these are faqs')
+            res.data.forEach(row => {
+                const row_obj = {
+                    project_id: row.id,
+                    question: row.question,
+                    answer: row.answer
+                }
+                dispatch(addFaqQuestionAnswer({row_obj}))
+            })
+
+        })
+        .catch(error => {
+            // console.log('error occured')
+            console.log(error)
+        })
+
 }
 export const createCampaign = (newProject) => dispatch => {
     console.log(newProject);
@@ -69,9 +118,22 @@ export const createCampaign = (newProject) => dispatch => {
             console.log(err);
         });
 }
+
+
+export const createNewFaq = (newFaq) => dispatch => {
+    console.log(newFaq)
+    axios
+        .post("/api/project/faq", qs.stringify(newFaq))
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
 // selector
 export const selectProjectByID = (state, id) => state.projectsInStore.find(project => project.id === id)
 
 // selector
-export const { loadAll, addCampaign, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList } = store.actions
+export const {loadAll, addCampaign, addFaqQuestionAnswer, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
 export default store.reducer
