@@ -28,6 +28,7 @@ import ProjectDetails from "./components/ProjectShowCasing/ProjectDetails";
 import PaymentSuccess from "./components/paymentPages/PaymentSuccess"
 import PaymentFailed from "./components/paymentPages/PaymentFailed"
 import PaymentCancelled from "./components/paymentPages/PaymentCancelled"
+import CampaignForm2 from "./components/campaign_form/campaign_form_2";
 
 //axios.defaults.baseURL = "https://innofund-server.herokuapp.com"
 axios.defaults.baseURL = "http://localhost:5000";

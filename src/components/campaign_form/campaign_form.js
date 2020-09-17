@@ -17,13 +17,14 @@ const CampaignForm = () => {
         M.FormSelect.init(document.getElementById('project_type'))
     }, [])
 
+    const [submitted, setSubmitted] = useState(false)
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(project)
-        dispatch(createCampaign(project))
-        //TODO: Routing kore homePage e jabe if the credentials are correct
-        //{<Link to={router.PROFIT_SCHEME} project={project}> Campaign2 </Link>}
-
+        dispatch(createCampaign(project));
+        console.log('Now Im here')
+        setSubmitted(true)
     }
 
     const handleChange = (event) => {
@@ -38,7 +39,7 @@ const CampaignForm = () => {
         <div>
             <div className="container">
                 <h3>Home Start A Project</h3>
-                <form onSubmit={handleSubmit}>
+                {submitted ? <Link to={router.PROFIT_SCHEME} project={project}/> : <form onSubmit={handleSubmit}>
                     <div>
                         <input type='text' onChange={handleChange} value={project.project_name}
                                name={'project_name'} placeholder={'project_name'}/>
@@ -93,7 +94,7 @@ const CampaignForm = () => {
                             type="submit"
                             className="btn btn-large waves-effect waves-light hoverable indigo darken-1">Next
                     </button>
-                </form>
+                </form>}
             </div>
         </div>
     );

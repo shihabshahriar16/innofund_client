@@ -1,13 +1,13 @@
-import ProjectModel from "../../dataModels/ProjectModel";
+import React, {useEffect, useState} from 'react'
 import {useDispatch} from "react-redux";
 import M from "materialize-css";
 import {createCampaign} from "../../store/campaignFormSlice";
 import produce from "immer";
-import {profitschemes} from "../../dataModels/ProfitSchemes";
+import {profit_schemes} from "../../dataModels/Profit_schemes";
 
 const CampaignForm2 = (props) => {
     const [project, setProject] = useState(props.project)
-    const [min_pledge, setmin_pledge] = useState('')
+    const [min_pledge, setMin_pledge] = useState('')
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const CampaignForm2 = (props) => {
 
     const handleChange = (event) => {
         const {name, value} = event.target;
-        setmin_pledge(produce(min_pledge, draft => {
+        setMin_pledge(produce(min_pledge, draft => {
             draft[name] = value
         }))
         project.min_pledge.push(value)
@@ -37,15 +37,16 @@ const CampaignForm2 = (props) => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <select id='profit_scheme'>
-                            <option value={profitschemes.ELITE}>{profitschemes.ELITE}</option>
-                            <option value={profitschemes.PLATINUM}>{profitschemes.PLATINUM}</option>
-                            <option value={profitschemes.DIAMOND}>{profitschemes.DIAMOND}</option>
-                            <option value={profitschemes.GOLD}>{profitschemes.GOLD}</option>
-                            <option value={profitschemes.SILVER}>{profitschemes.SILVER}</option>
-                            <option value={profitschemes.BRONZE}>{profitschemes.BRONZE}</option>
+                            <option value={profit_schemes.ELITE}>{profit_schemes.ELITE}</option>
+                            <option value={profit_schemes.PLATINUM}>{profit_schemes.PLATINUM}</option>
+                            <option value={profit_schemes.DIAMOND}>{profit_schemes.DIAMOND}</option>
+                            <option value={profit_schemes.GOLD}>{profit_schemes.GOLD}</option>
+                            <option value={profit_schemes.SILVER}>{profit_schemes.SILVER}</option>
+                            <option value={profit_schemes.BRONZE}>{profit_schemes.BRONZE}</option>
                         </select>
 
-                        <label className='row s2 teal-text darken-4' style={{fontWeight: "bold", fontSize: 15}}>Minimum Pledge Money
+                        <label className='row s2 teal-text darken-4' style={{fontWeight: "bold", fontSize: 15}}>Minimum
+                            Pledge Money
                             <input className='min pledge money' style={{marginBottom: 50}} type='number'
                                    onChange={handleChange}
                                    value={min_pledge}
