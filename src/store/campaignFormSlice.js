@@ -42,11 +42,11 @@ const store = createSlice({
         addCommentToParticularProject: (projects, action) => {
             const index = projects.findIndex(project => project.id === action.payload.id)
             if (index >= 0) {
-                projects[index].comments.push(action.payload.comment)
+                projects[index].comments.push(action.payload.com_model)
             }
         },
         addFaqQuestionAnswer: (projects, action) => {
-            const {project_id, question, answer} = action.payload.row_obj
+            const {project_id, question, answer} = action.payload
             let ques_found = false
             // console.log(projects)
             projects.forEach(project => {
@@ -69,6 +69,14 @@ const store = createSlice({
                 }
             })
         },
+        floodComments: (projects, action) => {
+            const {project_id, user_id, comment, timestamp} = action.payload
+            projects.forEach(project => {
+                if (project.id === project_id) {
+                    project.comments.push({user_id, comment, timestamp})
+                }
+            })
+        }
     }
 })
 
@@ -85,9 +93,7 @@ export const loadCampaign = () => dispatch => {
         });
 
     axios
-        .get(
-            "api/project/faq/all"
-        )
+        .get("api/project/faq/all")
         .then(res => {
             // console.log(res.data, 'these are faqs')
             res.data.forEach(row => {
@@ -96,13 +102,26 @@ export const loadCampaign = () => dispatch => {
                     question: row.question,
                     answer: row.answer
                 }
-                dispatch(addFaqQuestionAnswer({row_obj}))
+                dispatch(addFaqQuestionAnswer(row_obj))
             })
 
         })
         .catch(error => {
             // console.log('error occured')
             console.log(error)
+        })
+
+    axios
+        .get('api/project/comment/all')
+        .then(res => {
+            res.data.forEach(row => {
+                const row_obj = {
+                    project_id: row.id,
+                    user_id: row.user_id,
+                    comment: row.comment
+                }
+                dispatch(floodComments(row_obj))
+            })
         })
 
 }
@@ -131,9 +150,18 @@ export const createNewFaq = (newFaq) => dispatch => {
             console.log(error)
         })
 }
+
+export const createNewComment = (newComment) => dispatch => {
+    axios
+        .post('/api/project/comment', qs.stringify(newComment))
+        .then(res => {
+            console.log(res)
+        })
+        .catch(error => console.log(error))
+}
 // selector
 export const selectProjectByID = (state, id) => state.projectsInStore.find(project => project.id === id)
 
 // selector
-export const {loadAll, addCampaign, addFaqQuestionAnswer, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
+export const {loadAll, addCampaign, floodComments, addFaqQuestionAnswer, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
 export default store.reducer
