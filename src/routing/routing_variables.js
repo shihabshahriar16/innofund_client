@@ -6,7 +6,8 @@ const router = {
     CHANGE_PASSWORD: '/change_password/:token',
     VERIFY_EMAIL: '/verify_email',
     DASHBOARD: '/dashboard',
-    PROJECT_DETAILS: '/project_details'
+    PROJECT_DETAILS: '/project_details',
+    PROFIT_SCHEME: '/profit_scheme'
 }
 
 export default router

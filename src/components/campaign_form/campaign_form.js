@@ -6,6 +6,8 @@ import ProjectModel from "../../dataModels/ProjectModel";
 import {projectTypes} from "../../dataModels/ProjectTypes";
 import produce from 'immer'
 import {createCampaign} from "../../store/campaignFormSlice";
+import {Link} from "react-router-dom";
+import router from "../../routing/routing_variables";
 
 const CampaignForm = () => {
     const [project, setProject] = useState(ProjectModel())
@@ -20,6 +22,8 @@ const CampaignForm = () => {
         // console.log(project)
         dispatch(createCampaign(project))
         //TODO: Routing kore homePage e jabe if the credentials are correct
+        //{<Link to={router.PROFIT_SCHEME} project={project}> Campaign2 </Link>}
+
     }
 
     const handleChange = (event) => {
@@ -97,4 +101,4 @@ const CampaignForm = () => {
 
 }
 
-export default CampaignForm
+export default CampaignForm;

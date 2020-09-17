@@ -73,6 +73,7 @@ function App() {
                                 <Route exact path={router.FORGOT_PASSWORD} component={ForgotPass}/>
                                 <Route exact path={router.CHANGE_PASSWORD} component={ChangePass}/>
                                 <Route exact path={router.VERIFY_EMAIL} component={VerifyEmail}/>
+                                <Route exact path={router.PROFIT_SCHEME} component={CampaignForm2}/>
 
                                 <Route exact path={"/success"} component={PaymentSuccess}/>
                                 <Route exact path={"/failed"} component={PaymentFailed}/>
