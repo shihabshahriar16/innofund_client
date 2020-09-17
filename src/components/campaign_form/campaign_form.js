@@ -8,6 +8,7 @@ import produce from 'immer'
 import {createCampaign} from "../../store/campaignFormSlice";
 import {Link} from "react-router-dom";
 import router from "../../routing/routing_variables";
+import CampaignForm2 from "./campaign_form_2";
 
 const CampaignForm = () => {
     const [project, setProject] = useState(ProjectModel())
@@ -36,10 +37,10 @@ const CampaignForm = () => {
     }
 
     return (
-        <div>
+        submitted ? <CampaignForm2 project={project}/> : <div>
             <div className="container">
                 <h3>Home Start A Project</h3>
-                {submitted ? <Link to={router.PROFIT_SCHEME} project={project}/> : <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <input type='text' onChange={handleChange} value={project.project_name}
                                name={'project_name'} placeholder={'project_name'}/>
@@ -94,7 +95,7 @@ const CampaignForm = () => {
                             type="submit"
                             className="btn btn-large waves-effect waves-light hoverable indigo darken-1">Next
                     </button>
-                </form>}
+                </form>
             </div>
         </div>
     );
