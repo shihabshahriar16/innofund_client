@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
 import M from "materialize-css";
-import {addCommentToParticularProject, createCampaign} from "../../store/campaignFormSlice";
+import {createCampaign, addMemberToParticularProject} from "../../store/campaignFormSlice";
 //import produce from "immer";
 import {profitschemes} from "../../dataModels/Profit_schemes";
 import produce from "immer";
@@ -22,7 +23,7 @@ const CampaignForm2 = ({project}) => {
         event.preventDefault();
         // console.log(project)
         project.min_pledge.push(min_pledge)
-        dispatch(createCampaign(project))
+        //dispatch(createCampaign(project))
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }
 
@@ -32,7 +33,7 @@ const CampaignForm2 = ({project}) => {
             setTeam_members(produce(team_members => {
                 team_members.push(member)
             }));
-            dispatch(addCommentToParticularProject({id: project.id, member}));
+            dispatch(addMemberToParticularProject({id: project.id, member}));
             setMember('');
         } else {
             alert('This member is already there. Add a new one')
@@ -57,7 +58,7 @@ const CampaignForm2 = ({project}) => {
                                    onChange={handleChange}
                                    value={min_pledge}
                                    name={'min_pledge'}
-                                   placeholder='Minimum Pledge Money'/>
+                                   placeholder='Amount'/>
                         </label>
 
                         <label className='row s2 teal-text darken-4'

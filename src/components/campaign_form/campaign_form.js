@@ -21,8 +21,8 @@ const CampaignForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(project)
-        dispatch(createCampaign(project));
-        console.log('Now Im here')
+        //dispatch(createCampaign(project));
+        //console.log('Now Im here')
         setSubmitted(true)
     }
 
