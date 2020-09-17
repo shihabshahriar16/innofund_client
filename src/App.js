@@ -74,9 +74,9 @@ function App() {
                                 <Route exact path={router.CHANGE_PASSWORD} component={ChangePass}/>
                                 <Route exact path={router.VERIFY_EMAIL} component={VerifyEmail}/>
 
-                                <Route exact path={"/success"} component={PaymentSuccess}/>
-                                <Route exact path={"/failed"} component={PaymentFailed}/>
-                                <Route exact path={"/cancel"} component={PaymentCancelled}/>
+                                <Route exact path="/success" component={PaymentSuccess}/>
+                                <Route exact path="/failed" component={PaymentFailed}/>
+                                <Route exact path="/cancel" component={PaymentCancelled}/>
                                 
                                 {/* the following will be private routes */}
                                 <Route exact path="/dashboard" component={Dashboard}/>

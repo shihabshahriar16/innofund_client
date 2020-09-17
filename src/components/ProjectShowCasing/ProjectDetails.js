@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector } from "react-redux";
+import React, { useEffect,useState } from 'react';
+//import { useSelector } from "react-redux";
 import './details.css'
 import M from 'materialize-css'
 //import { Link } from "react-router-dom";
@@ -8,17 +8,19 @@ import M from 'materialize-css'
 import axios from "axios";
 
 const ProjectDetails = (props) => {
+    const [price,setPrice] = useState(1);
     const project = props.location.state
-    let user = useSelector(state => state.authentication)
-    console.log(project)
     useEffect(() => {
         M.Tabs.init(document.getElementById('tabs-swipe-demo'), {})
     }, [])
+
+
     const onSupportClick = e => {
         
-    axios.post(`/api/project/pledge/${user.id}/${project.id}`)
+    axios.post(`/api/project/pledge/${project.id}/${price}`)
                 .then(res => {
                     if(res.data.status === 'success'){
+                        console.log(res.data.data)
                         window.open(res.data.data);
                     } else {
                         M.toast({ html: "Server Error" })
@@ -31,7 +33,6 @@ const ProjectDetails = (props) => {
                     console.log(err)
                 });
             }
-
     return (
         <div className='container'>
             <div className='center-align' style={{ marginTop: '20px', marginBottom: '20px' }}>
@@ -55,6 +56,7 @@ const ProjectDetails = (props) => {
                     <h1 className='project_attribute' style={{ marginTop: '0px', fontSize: '20px' }}>days to go</h1>
                     <div>
                         <button 
+                        id="sslczPayBtn"
                         value={project.id}
                         onClick={onSupportClick}
                         style={{ marginTop: "20px" }} 
@@ -62,8 +64,8 @@ const ProjectDetails = (props) => {
                             Support This Project
                         </button>
                         <input
-                            //onChange={this.onChange}
-                            //value={this.state.price}
+                            onChange={(e)=>{setPrice(e.target.value)}}
+                            value={price}
                             //error={errors.price}
                             id="amount"
                             type="number"
