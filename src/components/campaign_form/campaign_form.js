@@ -6,8 +6,6 @@ import ProjectModel from "../../dataModels/ProjectModel";
 import {projectTypes} from "../../dataModels/ProjectTypes";
 import produce from 'immer'
 import {createCampaign} from "../../store/campaignFormSlice";
-import {Link} from "react-router-dom";
-import router from "../../routing/routing_variables";
 import CampaignForm2 from "./campaign_form_2";
 
 const CampaignForm = () => {

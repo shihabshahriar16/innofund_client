@@ -15,6 +15,7 @@ export default function ProjectModel() {
         comments: [],
         faqs: [],
         min_pledge: [],
-        profit_scheme: []
+        profit_scheme: [],
+        team_members: []
     }
 }
