@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 //import ProjectModel from "../dataModels/ProjectModel";
 import axios from "axios";
 import qs from "querystring";
+import {FAQ_model} from "../components/ProjectShowCasing/FAQ_page";
 
 const store = createSlice({
     name: 'projectsInStore',
@@ -45,16 +46,26 @@ const store = createSlice({
             }
         },
         addFaqQuestionAnswer: (projects, action) => {
-            const {project_id, question, answer} = action.payload
+            const {project_id, question, answer} = action.payload.row_obj
             let ques_found = false
+            // console.log(projects)
             projects.forEach(project => {
+                // console.log(project)
                 if (project.id === project_id) {
+                    console.log(project.id, 'id printed')
                     project.faqs.forEach(faq => {
                         if (faq.question === question) {
                             ques_found = true
                             faq.answers.push(answer)
                         }
                     })
+
+                    if (!ques_found) {
+                        const model = FAQ_model();
+                        model.question = question
+                        model.answers.push(answer)
+                        project.faqs.push(model)
+                    }
                 }
             })
         },
@@ -75,13 +86,13 @@ export const loadCampaign = () => dispatch => {
 
     axios
         .get(
-            "api/project/faq"
+            "api/project/faq/all"
         )
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data, 'these are faqs')
             res.data.forEach(row => {
                 const row_obj = {
-                    project_id: row.project_id,
+                    project_id: row.id,
                     question: row.question,
                     answer: row.answer
                 }
@@ -90,6 +101,7 @@ export const loadCampaign = () => dispatch => {
 
         })
         .catch(error => {
+            // console.log('error occured')
             console.log(error)
         })
 

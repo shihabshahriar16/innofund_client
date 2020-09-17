@@ -5,7 +5,7 @@ import {addFaqToParticularProject, addWholeFaqList, createNewFaq} from "../../st
 import produce from "immer";
 //import {useImmer} from "use-immer";
 
-function FAQ_model() {
+export function FAQ_model() {
     return {
         question: '',
         answers: []
@@ -58,7 +58,7 @@ const FAQs = ({project}) => {
     return (
         <div>
             {!empty ? faqs.map(faq => {
-                return (<div id={faq.question}>
+                return (<div id={faq.question} key={project.id.toString().concat(faq.question)}>
                     <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{faq.question}</div>
                     <div>{
                         faq.answers.map(answer => (<li style={{fontSize: '15px', color: '#19ca99', fontWeight: 'bold'}}
