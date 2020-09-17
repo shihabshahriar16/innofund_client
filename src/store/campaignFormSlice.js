@@ -71,9 +71,15 @@ const store = createSlice({
         },
         floodComments: (projects, action) => {
             const {project_id, user_id, comment, timestamp} = action.payload
+            let hasComment = false
             projects.forEach(project => {
                 if (project.id === project_id) {
-                    project.comments.push({user_id, comment, timestamp})
+                    project.comments.forEach(comment_obj => {
+                        if (comment_obj.user_id === user_id && comment === comment_obj.comment) {
+                            hasComment = true
+                        }
+                    })
+                    if (!hasComment) project.comments.push({user_id, comment, timestamp})
                 }
             })
         }
