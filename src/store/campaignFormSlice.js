@@ -165,6 +165,18 @@ export const createNewFaq = (newFaq) => dispatch => {
         })
 }
 
+export const createNewProfitScheme = (newProfitScheme) => dispatch => {
+    console.log(newProfitScheme)
+    axios
+        .post("/api/project/profit_scheme", qs.stringify(newProfitScheme))
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+
 export const createNewComment = (newComment) => dispatch => {
     axios
         .post('/api/project/comment', qs.stringify(newComment))

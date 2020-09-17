@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
 import M from "materialize-css";
-import {createCampaign, addMemberToParticularProject} from "../../store/campaignFormSlice";
+import {createCampaign, addMemberToParticularProject, createNewFaq} from "../../store/campaignFormSlice";
 //import produce from "immer";
 import {profitschemes} from "../../dataModels/Profit_schemes";
 import produce from "immer";
@@ -25,6 +25,7 @@ const CampaignForm2 = (props) => {
         // console.log(project)
         project.min_pledge.push(min_pledge)
         //dispatch(createCampaign(project))
+        dispatch(createNewProfitScheme({project_id: project.id, id: faq.question, answer: newAns}))
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }
 
