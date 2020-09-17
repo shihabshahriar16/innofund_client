@@ -14,5 +14,8 @@ export default function ProjectModel() {
         project_showcasing_video_url: '',
         comments: [],
         faqs: [],
+        min_pledge: [],
+        profit_scheme: [],
+        team_members: []
     }
 }

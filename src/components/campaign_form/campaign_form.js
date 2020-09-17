@@ -6,6 +6,7 @@ import ProjectModel from "../../dataModels/ProjectModel";
 import {projectTypes} from "../../dataModels/ProjectTypes";
 import produce from 'immer'
 import {createCampaign} from "../../store/campaignFormSlice";
+import CampaignForm2 from "./campaign_form_2";
 
 const CampaignForm = () => {
     const [project, setProject] = useState(ProjectModel())
@@ -15,11 +16,14 @@ const CampaignForm = () => {
         M.FormSelect.init(document.getElementById('project_type'))
     }, [])
 
+    const [submitted, setSubmitted] = useState(false)
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log(project)
-        dispatch(createCampaign(project))
-        //TODO: Routing kore homePage e jabe if the credentials are correct
+        dispatch(createCampaign(project));
+        console.log('Now Im here')
+        setSubmitted(true)
     }
 
     const handleChange = (event) => {
@@ -31,7 +35,7 @@ const CampaignForm = () => {
     }
 
     return (
-        <div>
+        submitted ? <CampaignForm2 project={project}/> : <div>
             <div className="container">
                 <h3>Home Start A Project</h3>
                 <form onSubmit={handleSubmit}>
@@ -97,4 +101,4 @@ const CampaignForm = () => {
 
 }
 
-export default CampaignForm
+export default CampaignForm;

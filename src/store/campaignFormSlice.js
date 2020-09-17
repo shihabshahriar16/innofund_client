@@ -45,6 +45,12 @@ const store = createSlice({
                 projects[index].comments.push(action.payload.com_model)
             }
         },
+        addMemberToParticularProject: (projects, action) => {
+            const index = projects.findIndex(project => project.id === action.payload.id)
+            if (index >= 0) {
+                projects[index].team_members.push(action.payload.member)
+            }
+        },
         addFaqQuestionAnswer: (projects, action) => {
             const {project_id, question, answer} = action.payload
             let ques_found = false
