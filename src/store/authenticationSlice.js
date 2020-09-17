@@ -28,7 +28,7 @@ export const registerUser = (userData, history) => (dispatch) => {
         .post("/api/register", qs.stringify(userData))
         .then((res) => {
             console.log(res.data);
-            history.push("/verifyemail", userData);
+            history.push("/login", userData);
         }) // re-direct to email verification on successful register
         .catch((err) => {
             console.log(err);
@@ -50,7 +50,7 @@ export const loginUser = (userData, history) => (dispatch) => {
             // Decode token to get user data
             const decoded = jwt_decode(token);
             if (decoded.emailVerify === false) {
-                history.push("/verifyemail", decoded);
+                history.push("/login", decoded);
             } else {
                 localStorage.setItem("jwtToken", token);
                 // Set token to Auth header
