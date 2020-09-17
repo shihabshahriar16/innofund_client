@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import qs from 'querystring';
+//import qs from 'querystring';
 
 const store = createSlice({
   name: 'myProfile',

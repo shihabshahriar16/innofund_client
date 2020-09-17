@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import MyProjects from "./MyProjects"
 import Inbox from "./Inbox"
 import ProjectsBacked from "./ProjectsBacked"
-import Bookmarks from "./Bookmarks"
+//import Bookmarks from "./Bookmarks"
 import Settings from "./Settings"
 import M from "materialize-css"
 
