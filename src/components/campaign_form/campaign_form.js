@@ -22,7 +22,7 @@ const CampaignForm = () => {
         event.preventDefault();
         // console.log(project)
         dispatch(createCampaign(project));
-        console.log('Now Im here')
+        //console.log('Now Im here')
         setSubmitted(true)
     }
 
