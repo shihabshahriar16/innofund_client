@@ -28,14 +28,14 @@ class DashboardUser extends Component {
                             <li className="tab col s3"><a href="#test1">My projects</a></li>
                             <li className="tab col s3"><a href="#test2">Inbox</a></li>
                             <li className="tab col s3"><a href="#test3">Projects backed</a></li>
-                            <li className="tab col s3"><a href="#test4">Bookmarks</a></li>
+                            {/* <li className="tab col s3"><a href="#test4">Bookmarks</a></li> */}
                             <li className="tab col s3"><a href="#test5">Settings</a></li>
                         </ul>
                     </div>
                     <div id="test1" className="col s12"><MyProjects/></div>
                     <div id="test2" className="col s12"><Inbox/></div>
                     <div id="test3" className="col s12"><ProjectsBacked/></div>
-                    <div id="test4" className="col s12"><Bookmarks/></div>
+                    {/* <div id="test4" className="col s12"><Bookmarks/></div> */}
                     <div id="test5" className="col s12"><Settings/></div>
                 </div>
             </div>
