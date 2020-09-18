@@ -75,8 +75,9 @@ const CampaignForm2 = ({project}) => {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <div>
+                            {/*{console.log((empty_schemes, empty_min_pledges))}*/}
                             {!empty_schemes ? profit_schemes.map(profitschemes => (
-                                    <div id={profitschemes}>
+                                    <div id={profitschemes} key={profitschemes.toString()}>
                                         <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{profitschemes}</div>
                                     </div>)
                                 )
@@ -87,12 +88,11 @@ const CampaignForm2 = ({project}) => {
                             }
 
                             {!empty_min_pledges ? min_pledges.map(min_pledges => (
-                                    <div id={min_pledges}>
+                                    <div id={min_pledges} key={min_pledges.toString()}>
                                         <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{min_pledges}</div>
                                     </div>)
                                 ) :
-                                <p>
-                                </p>
+                                null
                             }
                         </div>
 
