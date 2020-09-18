@@ -18,7 +18,7 @@ const Comments = ({project}) => {
     const [comment, setComment] = useState('')
     console.log(comment)
 
-    const user_id_for_comment = useSelector(state => state.auth.user.id)
+    const user_id_for_comment = useSelector(state => state.auth.user.name??"Anonymous")
     // console.log(user_id_for_comment)
 
     const empty = comments.length === 0
@@ -47,7 +47,7 @@ const Comments = ({project}) => {
         <div>
             {!empty ? comments.map(comment_object => (
                     <div id={comment_object}>
-                        <span className="new badge red">{comment_object.user_id}</span>
+                        <span className="badge red">{comment_object.user_id}</span>
                         <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{comment_object.comment}</div>
                     </div>)
                 ) :
