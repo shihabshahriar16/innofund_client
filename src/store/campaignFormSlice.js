@@ -32,14 +32,14 @@ const store = createSlice({
                 projects[index].faqs.push(action.payload.newFaq)
             }
         },
-        addMemberToParticularProject: (projects, action) => {
-            const index = projects.findIndex(project => project.id === action.payload.id)
-            console.log(action.payload)
-            if (index >= 0) {
-                console.log('SO PUSH MEWBER')
-                projects[index].team_members.push(action.payload.member)
-            }
-        },
+        // addMemberToParticularProject: (projects, action) => {
+        //     const index = projects.findIndex(project => project.id === action.payload.id)
+        //     console.log(action.payload)
+        //     if (index >= 0) {
+        //         console.log('SO PUSH MEWBER')
+        //         projects[index].team_members.push(action.payload.member)
+        //     }
+        // },
         addWholeFaqList: (projects, action) => {
             const index = projects.findIndex(project => project.id === action.payload.id)
             const faqList = action.payload.faqs
