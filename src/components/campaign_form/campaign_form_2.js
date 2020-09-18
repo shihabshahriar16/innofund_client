@@ -10,6 +10,7 @@ import {
 //import produce from "immer";
 import {profitschemes} from "../../dataModels/Profit_schemes";
 import produce from "immer";
+import index from "styled-components/dist/styled-components-macro.esm";
 //import {projectTypes} from "../../dataModels/ProjectTypes";
 
 const CampaignForm2 = ({project}) => {
@@ -62,9 +63,14 @@ const CampaignForm2 = ({project}) => {
         }
     }
 
-    const handleChange = (event) => {
+    const handleChangeMinPledge = (event) => {
         const value = event.target.value;
         setMin_pledge(value)
+        // console.log(this.state)
+    }
+    const handleChangeScheme = (event) => {
+        const value = event.target.value;
+        setSelectedSchemeValue(value)
         // console.log(this.state)
     }
 
@@ -76,9 +82,9 @@ const CampaignForm2 = ({project}) => {
                     <div>
                         <div>
                             {/*{console.log((empty_schemes, empty_min_pledges))}*/}
-                            {!empty_schemes ? profit_schemes.map(profitschemes => (
-                                    <div id={profitschemes} key={profitschemes.toString()}>
-                                        <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{profitschemes}</div>
+                            {!empty_schemes ? profit_schemes.map((profit_schemes,index) => (
+                                    <div id={profit_schemes} key={profit_schemes.toString()}>
+                                        <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>Option {index} : {profit_schemes}</div>
                                     </div>)
                                 )
                                 :
@@ -87,9 +93,9 @@ const CampaignForm2 = ({project}) => {
                                 </p>
                             }
 
-                            {!empty_min_pledges ? min_pledges.map(min_pledges => (
+                            {!empty_min_pledges ? min_pledges.map((min_pledges,index) => (
                                     <div id={min_pledges} key={min_pledges.toString()}>
-                                        <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{min_pledges}</div>
+                                        <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>Required Money for option {index} : {min_pledges}</div>
                                     </div>)
                                 ) :
                                 null
@@ -100,7 +106,7 @@ const CampaignForm2 = ({project}) => {
                             <label className='row s2 teal-text darken-4' style={{fontWeight: "bold", fontSize: 15}}>Minimum
                                 Pledge Money
                                 <input className='min pledge money' style={{marginBottom: 50}} type='number'
-                                       onChange={handleChange}
+                                       onChange={handleChangeMinPledge}
                                        value={min_pledge}
                                        name={'min_pledge'}
                                        placeholder='Amount'/>
@@ -110,8 +116,9 @@ const CampaignForm2 = ({project}) => {
                                    style={{fontWeight: "bold", fontSize: 15}}>Select
                                 Project Scheme
                             </label>
-
-                            <select id='profit_scheme' value = {selectedSchemeValue} onChange={event => setMember(event.target.value)}>
+                            {/*event => setProfit_schemes(event.target.value)*/}
+                            <select id='profit_scheme' value={selectedSchemeValue} onChange={handleChangeScheme} /*onChange={handleChangeScheme}*/>
+                                <option value="---">---Select---</option>
                                 <option value={profitschemes.ELITE}>{profitschemes.ELITE}</option>
                                 <option value={profitschemes.PLATINUM}>{profitschemes.PLATINUM}</option>
                                 <option value={profitschemes.DIAMOND}>{profitschemes.DIAMOND}</option>
