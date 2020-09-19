@@ -31,6 +31,7 @@ const CampaignForm2 = ({project}) => {
     const empty_min_pledges = min_pledges.length === 0
     const handleSubmit = (event) => {
         event.preventDefault();
+        alert('Campaign created successfully!')
         // console.log(project)
 
         //dispatch(createCampaign(project))
@@ -95,7 +96,7 @@ const CampaignForm2 = ({project}) => {
 
                             {!empty_min_pledges ? min_pledges.map((min_pledges,index) => (
                                     <div id={min_pledges} key={min_pledges.toString()}>
-                                        <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>Required Money for option {index} : {min_pledges}</div>
+                                        <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>Required Money for option {index} : ${min_pledges}</div>
                                     </div>)
                                 ) :
                                 null
