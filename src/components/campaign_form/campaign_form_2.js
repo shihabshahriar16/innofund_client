@@ -6,8 +6,11 @@ import {createNewProfitScheme} from "../../store/campaignFormSlice";
 import {profitschemes} from "../../dataModels/Profit_schemes";
 import produce from "immer";
 //import {projectTypes} from "../../dataModels/ProjectTypes";
+import {createCampaign} from "../../store/campaignFormSlice";
+import { useHistory } from "react-router";
 
 const CampaignForm2 = ({project}) => {
+    
     const [team_members, setTeam_members] = useState(project.team_members)
     const [profit_schemes, setProfit_schemes] = useState(project.profit_scheme)
     const [min_pledges, setMin_pledges] = useState(project.min_pledge)
@@ -15,6 +18,7 @@ const CampaignForm2 = ({project}) => {
     const [min_pledge, setMin_pledge] = useState('')
     const [selectedSchemeValue, setSelectedSchemeValue] = useState('')
     const dispatch = useDispatch()
+    const history = useHistory();
 
     useEffect(() => {
         M.FormSelect.init(document.getElementById('profit_scheme'))
@@ -25,6 +29,9 @@ const CampaignForm2 = ({project}) => {
     const empty_min_pledges = min_pledges.length === 0
     const handleSubmit = (event) => {
         event.preventDefault();
+        dispatch(createCampaign(project));
+        console.log('created')
+        history.push('/')
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }
     const handleSubmitScheme = event => {
@@ -48,6 +55,8 @@ const CampaignForm2 = ({project}) => {
             //dispatch(addMemberToParticularProject({id: project.id, member}));
             dispatch(createNewProfitScheme({project_id: project.id, option: selectedSchemeValue, min_pledge: min_pledge}))
             setMember('');
+            
+            
         } else {
             alert('This member is already there. Add a new one')
         }

@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import M from 'materialize-css'
-import {useDispatch} from "react-redux";
+//import {useDispatch} from "react-redux";
 //import {v4 as uuidV4} from 'uuid';
 import ProjectModel from "../../dataModels/ProjectModel";
 import {projectTypes} from "../../dataModels/ProjectTypes";
 import produce from 'immer'
-import {createCampaign} from "../../store/campaignFormSlice";
+//import {createCampaign} from "../../store/campaignFormSlice";
 import CampaignForm2 from "./campaign_form_2";
 
 const CampaignForm = () => {
     const [project, setProject] = useState(ProjectModel())
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
 
     useEffect(() => {
         M.FormSelect.init(document.getElementById('project_type'))
