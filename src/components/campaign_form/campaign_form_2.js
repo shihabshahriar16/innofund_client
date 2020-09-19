@@ -1,16 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {useDispatch} from "react-redux";
-import {Link} from "react-router-dom";
 import M from "materialize-css";
-import {
-    createCampaign,
-    addMemberToParticularProject,
-    createNewProfitScheme
-} from "../../store/campaignFormSlice";
+import {createNewProfitScheme} from "../../store/campaignFormSlice";
 //import produce from "immer";
 import {profitschemes} from "../../dataModels/Profit_schemes";
 import produce from "immer";
-import index from "styled-components/dist/styled-components-macro.esm";
 //import {projectTypes} from "../../dataModels/ProjectTypes";
 
 const CampaignForm2 = ({project}) => {
@@ -31,10 +25,6 @@ const CampaignForm2 = ({project}) => {
     const empty_min_pledges = min_pledges.length === 0
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log(project)
-
-        //dispatch(createCampaign(project))
-        //dispatch(createNewProfitScheme({project_id: project.id, id: min_pledge, answer: newAns}))
         //TODO: Routing kore homePage e jabe if the credentials are correct
     }
     const handleSubmitScheme = event => {
@@ -133,8 +123,8 @@ const CampaignForm2 = ({project}) => {
                         <br/>
                         <h4>ADD TEAM MEMBERS</h4>
                         <br/>
-                        {!empty ? team_members.map(members => (
-                                <div id={members}>
+                        {!empty ? team_members.map((members, index) => (
+                                <div id={members} key={index}>
                                     <div className='name_font' style={{fontSize: '20px', color: 'indigo'}}>{members}</div>
                                 </div>)
                             ) :
