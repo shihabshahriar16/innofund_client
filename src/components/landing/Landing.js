@@ -21,6 +21,7 @@ class Landing extends Component {
                 <HeaderImg/>
                 <div>
                     <div className="center-align container">
+                        <h4 className="red-text">Website Under Construction</h4>
                         <h4>
                             Welcome to <b>Innofund</b>
                         </h4>
