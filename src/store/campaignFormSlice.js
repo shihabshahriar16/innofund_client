@@ -32,6 +32,14 @@ const store = createSlice({
                 projects[index].faqs.push(action.payload.newFaq)
             }
         },
+        // addMemberToParticularProject: (projects, action) => {
+        //     const index = projects.findIndex(project => project.id === action.payload.id)
+        //     console.log(action.payload)
+        //     if (index >= 0) {
+        //         console.log('SO PUSH MEWBER')
+        //         projects[index].team_members.push(action.payload.member)
+        //     }
+        // },
         addWholeFaqList: (projects, action) => {
             const index = projects.findIndex(project => project.id === action.payload.id)
             const faqList = action.payload.faqs
@@ -43,12 +51,6 @@ const store = createSlice({
             const index = projects.findIndex(project => project.id === action.payload.id)
             if (index >= 0) {
                 projects[index].comments.push(action.payload.com_model)
-            }
-        },
-        addMemberToParticularProject: (projects, action) => {
-            const index = projects.findIndex(project => project.id === action.payload.id)
-            if (index >= 0) {
-                projects[index].team_members.push(action.payload.member)
             }
         },
         addFaqQuestionAnswer: (projects, action) => {
@@ -163,6 +165,18 @@ export const createNewFaq = (newFaq) => dispatch => {
         })
 }
 
+export const createNewProfitScheme = (newProfitScheme) => dispatch => {
+    console.log(newProfitScheme)
+    axios
+        .post("/api/project/profit_scheme", qs.stringify(newProfitScheme))
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+
 export const createNewComment = (newComment) => dispatch => {
     axios
         .post('/api/project/comment', qs.stringify(newComment))
@@ -175,5 +189,5 @@ export const createNewComment = (newComment) => dispatch => {
 export const selectProjectByID = (state, id) => state.projectsInStore.find(project => project.id === id)
 
 // selector
-export const {loadAll, addCampaign, floodComments, addFaqQuestionAnswer, deleteCampaign, addFaqToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
+export const {loadAll, addCampaign, floodComments, addFaqQuestionAnswer, deleteCampaign, addFaqToParticularProject, addMemberToParticularProject, addCommentToParticularProject, addWholeFaqList} = store.actions
 export default store.reducer
