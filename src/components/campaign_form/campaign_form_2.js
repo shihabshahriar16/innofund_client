@@ -27,13 +27,10 @@ const CampaignForm2 = ({project}) => {
     const empty = team_members.length === 0
     const empty_schemes = profit_schemes.length === 0
     const empty_min_pledges = min_pledges.length === 0
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(createCampaign(project));
-        console.log('created')
-        history.push('/')
-        //TODO: Routing kore homePage e jabe if the credentials are correct
-    }
+    // const handleSubmit = (event) => {
+        
+    //     //TODO: Routing kore homePage e jabe if the credentials are correct
+    // }
     const handleSubmitScheme = event => {
         //project.min_pledge.push(min_pledge)
         //project.profit_scheme.push('scheme')
@@ -77,7 +74,7 @@ const CampaignForm2 = ({project}) => {
         <div>
             <div className="container">
                 <h3>Select Your Profit Options</h3>
-                <form onSubmit={handleSubmit}>
+                <div>
                     <div>
                         <div>
                             {/*{console.log((empty_schemes, empty_min_pledges))}*/}
@@ -125,7 +122,7 @@ const CampaignForm2 = ({project}) => {
                                 <option value={profitschemes.SILVER}>{profitschemes.SILVER}</option>
                                 <option value={profitschemes.BRONZE}>{profitschemes.BRONZE}</option>
                             </select>
-                            <button onClick={handleSubmitScheme} className='btn-small indigo col s2' style={{height: '45px'}}>
+                            <button type='text' onClick={handleSubmitScheme} className='btn-small indigo col s2' style={{height: '45px'}}>
                                 Add Scheme
                             </button>
                         </div>
@@ -144,7 +141,7 @@ const CampaignForm2 = ({project}) => {
                         <div className='row' style={{display: 'flex', marginTop: '30px'}}>
                             <input type='text' placeholder='FULL NAME' value={member} onChange={event => setMember(event.target.value)}
                                    name='name' className='col s10' style={{marginRight: '20px'}}/>
-                            <button onClick={handleSubmitMember} className='btn-small indigo col s2' style={{height: '45px'}}>
+                            <button type='text' onClick={handleSubmitMember} className='btn-small indigo col s2' style={{height: '45px'}}>
                                 Add member
                             </button>
                         </div>
@@ -158,10 +155,16 @@ const CampaignForm2 = ({project}) => {
                         letterSpacing: "1.5px",
                         marginTop: "3rem"
                     }}
+                        onClick={(e)=>{
+                            e.preventDefault();
+                            dispatch(createCampaign(project));
+                            console.log('created')
+                            history.push('/')
+                        }}
                             type="submit"
                             className="btn btn-large waves-effect waves-light hoverable indigo darken-1">Create
                     </button>
-                </form>
+                </div>
             </div>
         </div>
     );
