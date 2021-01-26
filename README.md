@@ -1,3 +1,9 @@
+### 'THE WEBSITE LINK IS https://eager-pike-77eafa.netlify.app/'
+
+### 'SERVER SIDE CODE IS HERE https://github.com/shihabshahriar16/innofund_server'
+
+### 'WEBSITE SCHEMATIC IS GIVEN IN Innofund.pptx'
+
 ### 'ALWAYS COMMIT IN DEV NOT IN MASTER'
 
 ### 'ALWAYS PULL FROM DEV BEFORE STARTING YOUR WORK'
